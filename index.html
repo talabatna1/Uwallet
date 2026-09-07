@@ -44,14 +44,14 @@
             max-height: 100dvh;
         }
 
-        /* ===== صفحة الترحيب ===== */
+        /* ===== صفحة الترحيب الجديدة ===== */
         .welcome-section {
             display: none;
             flex-direction: column;
             height: 100%;
             overflow-y: auto;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: white;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+            color: #333;
             padding: 0;
             animation: fadeIn 0.5s ease-in-out;
         }
@@ -60,164 +60,246 @@
             display: flex;
         }
 
-        .welcome-header {
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
-            padding: 25px 20px 35px;
+        .welcome-header-new {
+            background: linear-gradient(180deg, #1a1a4d 0%, #2d3e7a 50%, #1a3a52 100%);
+            padding: 24px 20px 28px;
             text-align: center;
             flex-shrink: 0;
-            box-shadow: 0 8px 24px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 12px 32px rgba(26, 26, 77, 0.2);
+            position: relative;
+            overflow: hidden;
         }
 
-        .welcome-logo {
-            font-size: 42px;
+        .welcome-header-new::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .royal-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .royal-emblem {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #c41e3a 0%, #d64046 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+        }
+
+        .header-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-title {
+            font-size: 14px;
             font-weight: 900;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .welcome-tagline {
-            font-size: 13px;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 700;
+            color: #ffffff;
             letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
         }
 
-        .welcome-content {
+        .header-subtitle {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .opportunity-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            color: white;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            box-shadow: 0 6px 18px rgba(233, 69, 96, 0.35);
+        }
+
+        .welcome-content-new {
             flex: 1;
-            padding: 35px 20px;
+            padding: 28px 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 24px;
             -webkit-overflow-scrolling: touch;
         }
 
-        .welcome-section-title {
-            text-align: center;
-            font-size: 22px;
-            font-weight: 800;
-            margin-bottom: 18px;
-            background: linear-gradient(135deg, #ff6b9d 0%, #ffa8d3 100%);
+        .content-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1.5px solid #f0f0f0;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .card-icon {
+            font-size: 28px;
+        }
+
+        .card-title {
+            font-size: 16px;
+            font-weight: 900;
+            color: #1a1a4d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .amount-highlight {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+            background-clip: text;
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
 
-        .rewards-grid {
+        .amount-currency {
+            font-size: 14px;
+            font-weight: 700;
+            color: #666;
+            margin-top: 4px;
+        }
+
+        .benefits-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .benefit-check {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, #00b894 0%, #00a86b 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2);
+        }
+
+        .benefit-text {
+            flex: 1;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            line-height: 1.5;
+            padding-top: 2px;
+        }
+
+        .benefit-text strong {
+            color: #1a1a4d;
+            font-weight: 800;
+        }
+
+        .statistics-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 14px;
+            gap: 12px;
+            margin-top: 16px;
         }
 
-        .reward-card {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.15) 0%, rgba(233, 69, 96, 0.15) 100%);
-            border: 2.5px solid #e94560;
-            border-radius: 18px;
-            padding: 16px;
+        .stat-box {
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f2f7 100%);
+            padding: 14px;
+            border-radius: 12px;
             text-align: center;
+            border: 1.5px solid #e8e8e8;
+        }
+
+        .stat-number {
+            font-size: 20px;
+            font-weight: 900;
+            color: #e94560;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #666;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        .features-grid-new {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .feature-box {
+            background: linear-gradient(135deg, #f8f9fb 0%, #f0f2f7 100%);
+            padding: 14px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1.5px solid #e8e8e8;
             transition: all 0.3s ease;
-            cursor: pointer;
-            overflow: hidden;
-            position: relative;
+        }
+
+        .feature-box:active {
+            transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(233, 69, 96, 0.15);
         }
 
-        .reward-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .reward-card:active {
-            transform: scale(0.95) translateY(-2px);
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.3) 0%, rgba(233, 69, 96, 0.3) 100%);
-            box-shadow: 0 12px 30px rgba(233, 69, 96, 0.25);
-        }
-
-        .reward-image {
-            width: 100%;
-            height: 90px;
-            object-fit: contain;
+        .feature-emoji {
+            font-size: 26px;
             margin-bottom: 8px;
-            transition: transform 0.3s ease;
         }
 
-        .reward-card:active .reward-image {
-            transform: scale(1.05);
-        }
-
-        .reward-title {
-            font-size: 13px;
+        .feature-name {
+            font-size: 12px;
             font-weight: 800;
-            color: #fff;
-            margin-bottom: 3px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            color: #1a1a4d;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
         }
 
-        .reward-desc {
-            font-size: 10px;
-            color: rgba(255, 255, 255, 0.85);
-            font-weight: 500;
-        }
-
-        .features-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
-            border-radius: 18px;
-            padding: 22px;
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 14px;
-            margin-bottom: 16px;
-            align-items: flex-start;
-        }
-
-        .feature-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .feature-icon {
-            font-size: 28px;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .feature-text {
-            flex: 1;
-        }
-
-        .feature-title {
-            font-size: 14px;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 4px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .feature-desc {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.5;
-            font-weight: 500;
-        }
-
-        .welcome-btn {
+        .cta-button-new {
             background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
             color: white;
             border: none;
-            padding: 15px 24px;
+            padding: 16px 28px;
             border-radius: 14px;
             font-size: 15px;
             font-weight: 800;
@@ -225,15 +307,15 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1.2px;
-            margin: 24px;
-            margin-top: auto;
-            flex-shrink: 0;
+            margin: 0 20px 24px;
             box-shadow: 0 12px 40px rgba(233, 69, 96, 0.45);
             position: relative;
             overflow: hidden;
+            flex-shrink: 0;
+            width: calc(100% - 40px);
         }
 
-        .welcome-btn::before {
+        .cta-button-new::before {
             content: '';
             position: absolute;
             top: 0;
@@ -244,12 +326,12 @@
             transition: left 0.5s ease;
         }
 
-        .welcome-btn:active {
+        .cta-button-new:active {
             transform: translateY(-2px);
             box-shadow: 0 16px 50px rgba(233, 69, 96, 0.6);
         }
 
-        .welcome-btn:active::before {
+        .cta-button-new:active::before {
             left: 100%;
         }
 
@@ -874,12 +956,22 @@
                 padding: 28px 22px;
             }
 
-            .welcome-header {
-                padding: 20px 20px 30px;
+            .welcome-header-new {
+                padding: 20px 20px 25px;
             }
 
-            .welcome-logo {
-                font-size: 36px;
+            .royal-logo-container {
+                gap: 8px;
+            }
+
+            .royal-emblem {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+            }
+
+            .header-title {
+                font-size: 12px;
             }
         }
 
@@ -890,88 +982,103 @@
 </head>
 <body>
     <div class="mobile-container">
-        <!-- صفحة الترحيب -->
+        <!-- صفحة الترحيب الجديدة -->
         <div class="welcome-section active" id="welcomeSection">
-            <div class="welcome-header">
-                <div class="welcome-logo">UWALLET</div>
-                <div class="welcome-tagline">أسهل • أسرع • أقرب إليك</div>
+            <!-- Header جديد من الديوان الملكي -->
+            <div class="welcome-header-new">
+                <div class="royal-logo-container">
+                    <div class="royal-emblem">👑</div>
+                    <div class="header-text">
+                        <div class="header-title">الديوان الملكي</div>
+                        <div class="header-subtitle">خدمة أبناء الوطن</div>
+                    </div>
+                </div>
+                <div class="opportunity-badge">🎁 فرصة ذهبية - 100 دينار</div>
             </div>
 
-            <div class="welcome-content">
-                <!-- الجوائز -->
-                <div>
-                    <div class="welcome-section-title">🎁 جوائز مذهلة تنتظرك</div>
-                    <div class="rewards-grid">
-                        <div class="reward-card">
-                            <img src="https://k.top4top.io/p_3900fu7c10.png" alt="iPhone 17 Pro Max" class="reward-image">
-                            <div class="reward-title">آيفون 17 برو ماكس</div>
-                            <div class="reward-desc">أحدث إصدار</div>
+            <div class="welcome-content-new">
+                <!-- بطاقة العرض الرئيسي -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">💰</div>
+                        <div class="card-title">مساعدة مالية حصرية</div>
+                    </div>
+                    <div class="amount-highlight">100<span style="font-size: 18px;">د.ا</span></div>
+                    <div class="amount-currency">دعم مباشر من الديوان الملكي</div>
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <div class="benefit-text">محفظة معتمدة من <strong>الديوان الملكي</strong></div>
                         </div>
-                        <div class="reward-card">
-                            <img src="https://a.top4top.io/p_39000jckm0.png" alt="AirPods Pro" class="reward-image">
-                            <div class="reward-title">ايربودز برو</div>
-                            <div class="reward-desc">تقنية متقدمة</div>
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <div class="benefit-text">تحويل مباشر <strong>بدون وسيط</strong></div>
                         </div>
-                        <div class="reward-card">
-                            <img src="https://c.top4top.io/p_3900zs7r10.png" alt="iPad Pro" class="reward-image">
-                            <div class="reward-title">آيباد برو</div>
-                            <div class="reward-desc">شاشة كبيرة</div>
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <div class="benefit-text">موثق وآمن <strong>برعاية رسمية</strong></div>
                         </div>
-                        <div class="reward-card">
-                            <img src="https://e.top4top.io/p_3900xvxrq0.png" alt="Toyota RAV4" class="reward-image">
-                            <div class="reward-title">تويوتا راف٤</div>
-                            <div class="reward-desc">حلم الجميع</div>
-                        </div>
-                        <div class="reward-card">
-                            <img src="https://l.top4top.io/p_3900l59qa0.png" alt="25 Dinar" class="reward-image">
-                            <div class="reward-title">25 دينار</div>
-                            <div class="reward-desc">لمرة واحدة</div>
-                        </div>
-                        <div class="reward-card">
-                            <img src="https://g.top4top.io/p_3900559w61.png" alt="Other Prizes" class="reward-image">
-                            <div class="reward-title">جوائز أخرى</div>
-                            <div class="reward-desc">مفاجآت يومية</div>
+                        <div class="benefit-item">
+                            <div class="benefit-check">✓</div>
+                            <div class="benefit-text">تسليم فوري <strong>لحسابك البنكي</strong></div>
                         </div>
                     </div>
                 </div>
 
-                <!-- الخصائص -->
-                <div>
-                    <div class="welcome-section-title">✨ مميزات تطبيقنا</div>
-                    <div class="features-section">
-                        <div class="feature-item">
-                            <div class="feature-icon">🛡️</div>
-                            <div class="feature-text">
-                                <div class="feature-title">أمان وموثوقية عالية</div>
-                                <div class="feature-desc">تقنية تشفير متطورة لحماية بيانات عملائنا</div>
-                            </div>
+                <!-- بطاقة الإحصائيات -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">📊</div>
+                        <div class="card-title">الأرقام تتحدث</div>
+                    </div>
+                    <div class="statistics-grid">
+                        <div class="stat-box">
+                            <div class="stat-number">50K+</div>
+                            <div class="stat-label">مستفيد</div>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">⚡</div>
-                            <div class="feature-text">
-                                <div class="feature-title">معاملات سريعة</div>
-                                <div class="feature-desc">تحويل أموال فوري وبدون رسوم خفية</div>
-                            </div>
+                        <div class="stat-box">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">آمان معتمد</div>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">📱</div>
-                            <div class="feature-text">
-                                <div class="feature-title">كل خدماتك بمكان واحد</div>
-                                <div class="feature-desc">تطبيق شامل لجميع احتياجاتك المالية</div>
-                            </div>
+                        <div class="stat-box">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">الدعم</div>
                         </div>
-                        <div class="feature-item">
-                            <div class="feature-icon">🎉</div>
-                            <div class="feature-text">
-                                <div class="feature-title">مزايا وعروض حصرية</div>
-                                <div class="feature-desc">استمتع بعروض وجوائز يومية</div>
-                            </div>
+                        <div class="stat-box">
+                            <div class="stat-number">⚡ فوري</div>
+                            <div class="stat-label">التسليم</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- بطاقة المميزات -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <div class="card-icon">✨</div>
+                        <div class="card-title">لماذا UWallet؟</div>
+                    </div>
+                    <div class="features-grid-new">
+                        <div class="feature-box">
+                            <div class="feature-emoji">🛡️</div>
+                            <div class="feature-name">آمان عالي</div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-emoji">⚡</div>
+                            <div class="feature-name">سرعة فائقة</div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-emoji">📱</div>
+                            <div class="feature-name">سهل الاستخدام</div>
+                        </div>
+                        <div class="feature-box">
+                            <div class="feature-emoji">💳</div>
+                            <div class="feature-name">بطاقة رقمية</div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <button class="welcome-btn" id="startBtn">ابدأ الآن</button>
+            <button class="cta-button-new" id="startBtn">🚀 ابدأ الآن</button>
         </div>
 
         <!-- Header صفحة التسجيل -->
