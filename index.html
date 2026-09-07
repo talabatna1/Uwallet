@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
-    <title>Uwalet - قدم طلبك</title>
+    <title>Uwalet - خدمة الديوان الملكي</title>
     <style>
         * {
             margin: 0;
@@ -20,8 +20,8 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2b52 0%, #1a4d7a 100%);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -34,8 +34,8 @@
             max-width: 420px;
             height: 100vh;
             max-height: 100vh;
-            background: white;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            background: #ffffff;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             border-radius: 40px;
@@ -44,178 +44,175 @@
             max-height: 100dvh;
         }
 
-        /* ===== صفحة الترحيب الجديدة ===== */
+        /* ===== صفحة الترحيب الحديثة ===== */
         .welcome-section {
             display: none;
             flex-direction: column;
             height: 100%;
             overflow-y: auto;
-            background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+            background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%);
             color: #333;
             padding: 0;
-            animation: fadeIn 0.5s ease-in-out;
+            animation: fadeIn 0.6s ease-in-out;
         }
 
         .welcome-section.active {
             display: flex;
         }
 
-        .welcome-header-new {
-            background: linear-gradient(180deg, #1a1a4d 0%, #2d3e7a 50%, #1a3a52 100%);
-            padding: 24px 20px 28px;
+        /* Header العصري من الديوان الملكي */
+        .welcome-header-premium {
+            background: linear-gradient(135deg, #1a3a6b 0%, #2d5fa3 50%, #1e4673 100%);
+            padding: 20px 20px 24px;
             text-align: center;
             flex-shrink: 0;
-            box-shadow: 0 12px 32px rgba(26, 26, 77, 0.2);
+            box-shadow: 0 8px 28px rgba(26, 58, 107, 0.25);
             position: relative;
             overflow: hidden;
         }
 
-        .welcome-header-new::before {
+        .welcome-header-premium::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(233, 69, 96, 0.1) 0%, transparent 70%);
-            pointer-events: none;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
         }
 
-        .royal-logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .header-content {
             position: relative;
             z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            flex-direction: column;
         }
 
-        .royal-emblem {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #c41e3a 0%, #d64046 100%);
+        .royal-seal {
+            width: 70px;
+            height: 70px;
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 24px;
-            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            padding: 8px;
         }
 
-        .header-text {
-            position: relative;
-            z-index: 1;
+        .royal-seal img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .header-title {
-            font-size: 14px;
+        .header-text-section {
+            text-align: center;
+        }
+
+        .header-main-title {
+            font-size: 16px;
             font-weight: 900;
             color: #ffffff;
             letter-spacing: 1px;
-            text-transform: uppercase;
             margin-bottom: 4px;
         }
 
         .header-subtitle {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.95);
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        .opportunity-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
-            color: white;
-            padding: 8px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 800;
-            margin-top: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            box-shadow: 0 6px 18px rgba(233, 69, 96, 0.35);
-        }
-
-        .welcome-content-new {
+        .welcome-content-premium {
             flex: 1;
-            padding: 28px 20px;
+            padding: 24px 16px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 24px;
+            gap: 16px;
             -webkit-overflow-scrolling: touch;
         }
 
-        .content-card {
-            background: white;
-            border-radius: 16px;
-            padding: 20px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            border: 1.5px solid #f0f0f0;
+        /* بطاقة العرض الرئيسي */
+        .offer-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e8ecf1;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 16px;
+        .offer-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, rgba(233, 69, 96, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
         }
 
-        .card-icon {
-            font-size: 28px;
-        }
-
-        .card-title {
-            font-size: 16px;
-            font-weight: 900;
-            color: #1a1a4d;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .amount-highlight {
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+        .offer-amount {
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            font-size: 32px;
+            font-size: 48px;
             font-weight: 900;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 1;
         }
 
-        .amount-currency {
-            font-size: 14px;
-            font-weight: 700;
+        .offer-label {
+            font-size: 13px;
             color: #666;
-            margin-top: 4px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         .benefits-list {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 16px;
+            position: relative;
+            z-index: 1;
         }
 
         .benefit-item {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: 12px;
         }
 
-        .benefit-check {
-            width: 24px;
-            height: 24px;
+        .benefit-icon {
+            width: 28px;
+            height: 28px;
             background: linear-gradient(135deg, #00b894 0%, #00a86b 100%);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 14px;
+            font-size: 16px;
             flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(0, 184, 148, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 184, 148, 0.25);
         }
 
         .benefit-text {
@@ -223,99 +220,140 @@
             font-size: 13px;
             font-weight: 600;
             color: #333;
-            line-height: 1.5;
-            padding-top: 2px;
+            line-height: 1.4;
         }
 
         .benefit-text strong {
-            color: #1a1a4d;
+            color: #1a3a6b;
             font-weight: 800;
         }
 
-        .statistics-grid {
+        /* بطاقة الإحصائيات */
+        .stats-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e8ecf1;
+        }
+
+        .stats-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1a3a6b;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .stats-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
-            margin-top: 16px;
         }
 
-        .stat-box {
-            background: linear-gradient(135deg, #f8f9fb 0%, #f0f2f7 100%);
-            padding: 14px;
-            border-radius: 12px;
+        .stat-item {
+            background: linear-gradient(135deg, #f0f3f8 0%, #e8ecf1 100%);
+            padding: 14px 12px;
+            border-radius: 14px;
             text-align: center;
-            border: 1.5px solid #e8e8e8;
+            border: 1.5px solid #dde4ed;
+            transition: all 0.3s ease;
         }
 
-        .stat-number {
+        .stat-item:active {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
             font-size: 20px;
             font-weight: 900;
-            color: #e94560;
+            color: #c41e3a;
             margin-bottom: 4px;
         }
 
-        .stat-label {
+        .stat-name {
             font-size: 11px;
             color: #666;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
-        .features-grid-new {
+        /* بطاقة المميزات */
+        .features-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 2px solid #e8ecf1;
+        }
+
+        .features-title {
+            font-size: 14px;
+            font-weight: 800;
+            color: #1a3a6b;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .features-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
         }
 
-        .feature-box {
-            background: linear-gradient(135deg, #f8f9fb 0%, #f0f2f7 100%);
+        .feature-item {
+            background: linear-gradient(135deg, #f0f3f8 0%, #e8ecf1 100%);
             padding: 14px;
-            border-radius: 12px;
+            border-radius: 14px;
             text-align: center;
-            border: 1.5px solid #e8e8e8;
+            border: 1.5px solid #dde4ed;
             transition: all 0.3s ease;
         }
 
-        .feature-box:active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.15);
+        .feature-item:active {
+            transform: scale(0.97);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.1);
         }
 
         .feature-emoji {
-            font-size: 26px;
+            font-size: 28px;
             margin-bottom: 8px;
         }
 
         .feature-name {
             font-size: 12px;
             font-weight: 800;
-            color: #1a1a4d;
+            color: #1a3a6b;
             text-transform: uppercase;
-            letter-spacing: 0.4px;
+            letter-spacing: 0.3px;
         }
 
-        .cta-button-new {
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+        /* زر البدء */
+        .start-btn-premium {
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
             color: white;
             border: none;
             padding: 16px 28px;
-            border-radius: 14px;
+            border-radius: 16px;
             font-size: 15px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin: 0 20px 24px;
-            box-shadow: 0 12px 40px rgba(233, 69, 96, 0.45);
+            letter-spacing: 1px;
+            margin: 0 16px 20px;
+            box-shadow: 0 12px 36px rgba(196, 30, 58, 0.35);
             position: relative;
             overflow: hidden;
             flex-shrink: 0;
-            width: calc(100% - 40px);
+            width: calc(100% - 32px);
         }
 
-        .cta-button-new::before {
+        .start-btn-premium::before {
             content: '';
             position: absolute;
             top: 0;
@@ -323,21 +361,21 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
+            transition: left 0.6s ease;
         }
 
-        .cta-button-new:active {
+        .start-btn-premium:active {
             transform: translateY(-2px);
-            box-shadow: 0 16px 50px rgba(233, 69, 96, 0.6);
+            box-shadow: 0 16px 48px rgba(196, 30, 58, 0.5);
         }
 
-        .cta-button-new:active::before {
+        .start-btn-premium:active::before {
             left: 100%;
         }
 
         /* ===== صفحة التسجيل ===== */
         .header {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            background: linear-gradient(135deg, #f8f9fc 0%, #ffffff 100%);
             padding: 0;
             flex-shrink: 0;
             min-height: 160px;
@@ -419,7 +457,7 @@
             display: block;
             font-size: 13px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a3a6b;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -434,13 +472,13 @@
         .form-group .date-input {
             width: 100%;
             padding: 14px 16px;
-            border: 2.5px solid #e8e8e8;
-            border-radius: 12px;
+            border: 2.5px solid #dde4ed;
+            border-radius: 14px;
             font-size: 14px;
             font-family: inherit;
             transition: all 0.3s ease;
             text-align: left;
-            background: #f9f9f9;
+            background: #f8f9fc;
             color: #333;
             -webkit-appearance: none;
             appearance: none;
@@ -450,9 +488,9 @@
         .form-group input:focus,
         .form-group .date-input:focus {
             outline: none;
-            border-color: #e94560;
+            border-color: #c41e3a;
             background: white;
-            box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.12);
+            box-shadow: 0 0 0 4px rgba(196, 30, 58, 0.1);
             transform: translateY(-2px);
         }
 
@@ -476,16 +514,16 @@
         .btn-submit {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 15px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
             margin-top: 24px;
-            box-shadow: 0 12px 30px rgba(233, 69, 96, 0.35);
+            box-shadow: 0 12px 30px rgba(196, 30, 58, 0.35);
             text-transform: uppercase;
             letter-spacing: 0.8px;
             position: relative;
@@ -508,7 +546,7 @@
 
         .btn-submit:active {
             transform: translateY(-1px);
-            box-shadow: 0 16px 40px rgba(233, 69, 96, 0.45);
+            box-shadow: 0 16px 40px rgba(196, 30, 58, 0.45);
         }
 
         .btn-submit:active::before {
@@ -539,8 +577,8 @@
         .loader-ring {
             width: 80px;
             height: 80px;
-            border: 5px solid rgba(233, 69, 96, 0.1);
-            border-top-color: #e94560;
+            border: 5px solid rgba(196, 30, 58, 0.1);
+            border-top-color: #c41e3a;
             border-radius: 50%;
             animation: spin 1.2s linear infinite;
         }
@@ -551,7 +589,7 @@
 
         .loading-text {
             font-size: 16px;
-            color: #1e3c72;
+            color: #1a3a6b;
             font-weight: 700;
             text-align: center;
         }
@@ -583,7 +621,7 @@
         .verification-title {
             font-size: 20px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a3a6b;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -597,15 +635,15 @@
         }
 
         .phone-display {
-            background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fb 100%);
+            background: linear-gradient(135deg, #f5f7fa 0%, #f8f9fc 100%);
             padding: 14px 16px;
-            border-radius: 12px;
+            border-radius: 14px;
             margin-bottom: 28px;
             font-size: 12px;
             color: #666;
             font-weight: 600;
             text-align: center;
-            border: 2px solid #e8e8e8;
+            border: 2px solid #dde4ed;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         }
 
@@ -620,13 +658,13 @@
         .code-digit {
             width: 56px;
             height: 56px;
-            border: 2.5px solid #e8e8e8;
-            border-radius: 12px;
+            border: 2.5px solid #dde4ed;
+            border-radius: 14px;
             font-size: 24px;
             font-weight: 900;
             text-align: center;
             transition: all 0.3s ease;
-            background: #f9f9f9;
+            background: #f8f9fc;
             color: #333;
             cursor: text;
             -webkit-appearance: none;
@@ -635,18 +673,18 @@
 
         .code-digit:focus {
             outline: none;
-            border-color: #e94560;
+            border-color: #c41e3a;
             background: white;
-            box-shadow: 0 0 0 4px rgba(233, 69, 96, 0.15);
+            box-shadow: 0 0 0 4px rgba(196, 30, 58, 0.1);
             transform: scale(1.08);
         }
 
         .code-digit.filled {
-            border-color: #e94560;
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            border-color: #c41e3a;
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
             color: white;
             font-weight: 900;
-            box-shadow: 0 6px 20px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 6px 20px rgba(196, 30, 58, 0.3);
         }
 
         .timer-section {
@@ -657,7 +695,7 @@
         .timer {
             font-size: 24px;
             font-weight: 900;
-            color: #e94560;
+            color: #c41e3a;
             transition: all 0.3s ease;
             letter-spacing: 2px;
         }
@@ -697,7 +735,7 @@
         .resend-btn {
             background: none;
             border: none;
-            color: #e94560;
+            color: #c41e3a;
             font-size: 13px;
             font-weight: 800;
             cursor: pointer;
@@ -732,7 +770,7 @@
             background: #333;
             color: white;
             padding: 16px 24px;
-            border-radius: 12px;
+            border-radius: 14px;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
             animation: slideIn 0.4s ease-in-out;
             max-width: calc(100% - 48px);
@@ -750,7 +788,7 @@
         }
 
         .toast.info {
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
         }
 
         @keyframes slideIn {
@@ -840,7 +878,7 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fc 100%);
             border-radius: 20px;
             padding: 36px 28px;
             max-width: 320px;
@@ -874,7 +912,7 @@
         .modal-title {
             font-size: 20px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a3a6b;
             margin-bottom: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -891,30 +929,30 @@
         .modal-btn {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #e94560 0%, #ff6b9d 100%);
+            background: linear-gradient(135deg, #c41e3a 0%, #e94560 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 14px;
             font-weight: 800;
             cursor: pointer;
             transition: all 0.3s ease;
             -webkit-appearance: none;
             appearance: none;
-            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.3);
+            box-shadow: 0 8px 20px rgba(196, 30, 58, 0.3);
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
 
         .modal-btn:active {
             transform: translateY(-2px);
-            box-shadow: 0 12px 28px rgba(233, 69, 96, 0.4);
+            box-shadow: 0 12px 28px rgba(196, 30, 58, 0.4);
         }
 
         /* About Card Section */
         .about-section {
-            background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(233, 69, 96, 0.1) 100%);
-            border: 2px solid #e94560;
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.08) 0%, rgba(233, 69, 96, 0.08) 100%);
+            border: 2px solid #dde4ed;
             border-radius: 16px;
             padding: 20px;
             margin-top: 20px;
@@ -931,7 +969,7 @@
         .about-title {
             font-size: 16px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a3a6b;
             margin-bottom: 8px;
         }
 
@@ -956,22 +994,21 @@
                 padding: 28px 22px;
             }
 
-            .welcome-header-new {
-                padding: 20px 20px 25px;
+            .welcome-header-premium {
+                padding: 18px 20px 22px;
             }
 
-            .royal-logo-container {
-                gap: 8px;
+            .royal-seal {
+                width: 60px;
+                height: 60px;
             }
 
-            .royal-emblem {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
+            .header-main-title {
+                font-size: 14px;
             }
 
-            .header-title {
-                font-size: 12px;
+            .offer-amount {
+                font-size: 42px;
             }
         }
 
@@ -982,95 +1019,86 @@
 </head>
 <body>
     <div class="mobile-container">
-        <!-- صفحة الترحيب الجديدة -->
+        <!-- صفحة الترحيب الحديثة -->
         <div class="welcome-section active" id="welcomeSection">
-            <!-- Header جديد من الديوان الملكي -->
-            <div class="welcome-header-new">
-                <div class="royal-logo-container">
-                    <div class="royal-emblem">👑</div>
-                    <div class="header-text">
-                        <div class="header-title">الديوان الملكي</div>
+            <!-- Header عصري من الديوان الملكي -->
+            <div class="welcome-header-premium">
+                <div class="header-content">
+                    <div class="royal-seal">
+                        <img src="https://g.top4top.io/p_3902cvzk70.png" alt="الديوان الملكي">
+                    </div>
+                    <div class="header-text-section">
+                        <div class="header-main-title">الديوان الملكي</div>
                         <div class="header-subtitle">خدمة أبناء الوطن</div>
                     </div>
                 </div>
-                <div class="opportunity-badge">🎁 فرصة ذهبية - 100 دينار</div>
             </div>
 
-            <div class="welcome-content-new">
+            <div class="welcome-content-premium">
                 <!-- بطاقة العرض الرئيسي -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div class="card-icon">💰</div>
-                        <div class="card-title">مساعدة مالية حصرية</div>
-                    </div>
-                    <div class="amount-highlight">100<span style="font-size: 18px;">د.ا</span></div>
-                    <div class="amount-currency">دعم مباشر من الديوان الملكي</div>
+                <div class="offer-card">
+                    <div class="offer-amount">100 د.ا</div>
+                    <div class="offer-label">💰 مساعدة مالية حصرية</div>
                     <div class="benefits-list">
                         <div class="benefit-item">
-                            <div class="benefit-check">✓</div>
+                            <div class="benefit-icon">✓</div>
                             <div class="benefit-text">محفظة معتمدة من <strong>الديوان الملكي</strong></div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-check">✓</div>
+                            <div class="benefit-icon">✓</div>
                             <div class="benefit-text">تحويل مباشر <strong>بدون وسيط</strong></div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-check">✓</div>
+                            <div class="benefit-icon">✓</div>
                             <div class="benefit-text">موثق وآمن <strong>برعاية رسمية</strong></div>
                         </div>
                         <div class="benefit-item">
-                            <div class="benefit-check">✓</div>
+                            <div class="benefit-icon">✓</div>
                             <div class="benefit-text">تسليم فوري <strong>لحسابك البنكي</strong></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- بطاقة الإحصائيات -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div class="card-icon">📊</div>
-                        <div class="card-title">الأرقام تتحدث</div>
-                    </div>
-                    <div class="statistics-grid">
-                        <div class="stat-box">
-                            <div class="stat-number">50K+</div>
-                            <div class="stat-label">مستفيد</div>
+                <div class="stats-card">
+                    <div class="stats-title">📊 ثقة الملايين</div>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-value">50K+</div>
+                            <div class="stat-name">مستفيد</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">آمان معتمد</div>
+                        <div class="stat-item">
+                            <div class="stat-value">100%</div>
+                            <div class="stat-name">آمان</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">24/7</div>
-                            <div class="stat-label">الدعم</div>
+                        <div class="stat-item">
+                            <div class="stat-value">24/7</div>
+                            <div class="stat-name">الدعم</div>
                         </div>
-                        <div class="stat-box">
-                            <div class="stat-number">⚡ فوري</div>
-                            <div class="stat-label">التسليم</div>
+                        <div class="stat-item">
+                            <div class="stat-value">⚡</div>
+                            <div class="stat-name">فوري</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- بطاقة المميزات -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <div class="card-icon">✨</div>
-                        <div class="card-title">لماذا UWallet؟</div>
-                    </div>
-                    <div class="features-grid-new">
-                        <div class="feature-box">
+                <div class="features-card">
+                    <div class="features-title">✨ مميزات خاصة</div>
+                    <div class="features-grid">
+                        <div class="feature-item">
                             <div class="feature-emoji">🛡️</div>
                             <div class="feature-name">آمان عالي</div>
                         </div>
-                        <div class="feature-box">
+                        <div class="feature-item">
                             <div class="feature-emoji">⚡</div>
                             <div class="feature-name">سرعة فائقة</div>
                         </div>
-                        <div class="feature-box">
+                        <div class="feature-item">
                             <div class="feature-emoji">📱</div>
                             <div class="feature-name">سهل الاستخدام</div>
                         </div>
-                        <div class="feature-box">
+                        <div class="feature-item">
                             <div class="feature-emoji">💳</div>
                             <div class="feature-name">بطاقة رقمية</div>
                         </div>
@@ -1078,7 +1106,7 @@
                 </div>
             </div>
 
-            <button class="cta-button-new" id="startBtn">🚀 ابدأ الآن</button>
+            <button class="start-btn-premium" id="startBtn">🚀 ابدأ الآن</button>
         </div>
 
         <!-- Header صفحة التسجيل -->
