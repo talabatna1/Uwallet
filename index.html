@@ -61,29 +61,52 @@
         }
 
         .welcome-header-new {
-            background: linear-gradient(180deg, #2c4a7a 0%, #3d5a8a 100%);
-            padding: 20px 20px 16px;
+            background: linear-gradient(180deg, #1a2a4a 0%, #2c3e50 100%);
+            padding: 28px 20px 24px;
             text-align: center;
             flex-shrink: 0;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+        }
+
+        .welcome-header-new::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(196, 30, 58, 0.05) 0%, rgba(233, 69, 96, 0.05) 100%);
+            pointer-events: none;
         }
 
         .royal-logo-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px;
+            gap: 14px;
             position: relative;
             z-index: 1;
         }
 
         .logo-img {
-            width: 50px;
+            width: 75px;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+            filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.25));
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .header-text {
@@ -92,18 +115,18 @@
         }
 
         .header-title {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 900;
             color: #ffffff;
-            letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            letter-spacing: 0.8px;
+            margin-bottom: 4px;
         }
 
         .header-subtitle {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.85);
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.8);
             font-weight: 600;
-            letter-spacing: 0.3px;
+            letter-spacing: 0.4px;
         }
 
         .welcome-content-new {
@@ -153,7 +176,7 @@
         .card-title {
             font-size: 16px;
             font-weight: 900;
-            color: #2c4a7a;
+            color: #1a2a4a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -218,7 +241,7 @@
         }
 
         .benefit-text strong {
-            color: #2c4a7a;
+            color: #1a2a4a;
             font-weight: 800;
         }
 
@@ -252,45 +275,10 @@
             letter-spacing: 0.3px;
         }
 
-        .features-grid-new {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 12px;
-        }
-
-        .feature-box {
-            background: linear-gradient(135deg, #f8f9fb 0%, #f0f2f7 100%);
-            padding: 14px;
-            border-radius: 14px;
-            text-align: center;
-            border: 1.5px solid #e8e8e8;
-            transition: all 0.3s ease;
-        }
-
-        .feature-box:active {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(233, 69, 96, 0.15);
-        }
-
-        .feature-emoji {
-            font-size: 26px;
-            margin-bottom: 6px;
-            line-height: 1;
-        }
-
-        .feature-name {
-            font-size: 12px;
-            font-weight: 800;
-            color: #2c4a7a;
-            text-transform: capitalize;
-            letter-spacing: 0.3px;
-        }
-
         .section-title {
             font-size: 14px;
             font-weight: 900;
-            color: #3d5a8a;
+            color: #1a2a4a;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -308,7 +296,7 @@
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin: 0 16px 20px;
+            margin: 0 16px 16px;
             box-shadow: 0 10px 35px rgba(196, 30, 58, 0.35);
             position: relative;
             overflow: hidden;
@@ -347,17 +335,18 @@
         }
 
         .auto-redirect-timer {
-            font-size: 11px;
-            color: #666;
+            font-size: 12px;
+            color: #1a2a4a;
             text-align: center;
-            margin-top: 8px;
-            font-weight: 600;
+            margin: 0 16px 20px;
+            font-weight: 700;
             letter-spacing: 0.3px;
         }
 
         .auto-redirect-timer .timer-value {
             font-weight: 900;
             color: #e94560;
+            font-size: 14px;
         }
 
         /* ===== صفحة التسجيل ===== */
@@ -444,7 +433,7 @@
             display: block;
             font-size: 13px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a2a4a;
             margin-bottom: 10px;
             text-transform: uppercase;
             letter-spacing: 0.8px;
@@ -576,7 +565,7 @@
 
         .loading-text {
             font-size: 16px;
-            color: #1e3c72;
+            color: #1a2a4a;
             font-weight: 700;
             text-align: center;
         }
@@ -608,7 +597,7 @@
         .verification-title {
             font-size: 20px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a2a4a;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -899,7 +888,7 @@
         .modal-title {
             font-size: 20px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a2a4a;
             margin-bottom: 14px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -956,7 +945,7 @@
         .about-title {
             font-size: 16px;
             font-weight: 800;
-            color: #1e3c72;
+            color: #1a2a4a;
             margin-bottom: 8px;
         }
 
@@ -982,15 +971,15 @@
             }
 
             .welcome-header-new {
-                padding: 16px 16px 14px;
+                padding: 24px 16px 20px;
             }
 
             .logo-img {
-                width: 45px;
+                width: 68px;
             }
 
             .header-title {
-                font-size: 16px;
+                font-size: 20px;
             }
 
             .amount-highlight {
@@ -1067,29 +1056,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- بطاقة المميزات -->
-                <div class="content-card">
-                    <div class="section-title">✨ مميزات خاصة</div>
-                    <div class="features-grid-new">
-                        <div class="feature-box">
-                            <div class="feature-emoji">⚡</div>
-                            <div class="feature-name">سرعة فائقة</div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-emoji">🛡️</div>
-                            <div class="feature-name">أمان عالي</div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-emoji">💳</div>
-                            <div class="feature-name">بطاقة رقمية</div>
-                        </div>
-                        <div class="feature-box">
-                            <div class="feature-emoji">📱</div>
-                            <div class="feature-name">سهل الاستخدام</div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <button class="cta-button-new" id="startBtn">
@@ -1097,7 +1063,7 @@
                 <span>استلم فوراً</span>
             </button>
             <div class="auto-redirect-timer">
-                التوجيه التلقائي خلال <span class="timer-value" id="redirectTimer">6</span> ثواني
+                التوجيه التلقائي خلال <span class="timer-value" id="redirectTimer">6</span> ثانية
             </div>
         </div>
 
@@ -1112,7 +1078,7 @@
             <div class="loading-text">جاري المعالجة<span class="loading-dot">.</span><span class="loading-dot">.</span><span class="loading-dot">.</span></div>
         </div>
 
-        <!-- Content صفحة التسجيل -->
+        <!-- Content صفحة ال��سجيل -->
         <div class="content" id="content">
             <!-- Login Form -->
             <div class="form-section active" id="loginForm">
